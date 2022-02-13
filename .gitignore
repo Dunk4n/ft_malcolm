@@ -1,0 +1,12 @@
+ft_ssl
+a.out
+TODO
+note
+build
+core
+*.o
+*.a
+*~
+test
+tests
+*.swp
