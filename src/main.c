@@ -2216,6 +2216,7 @@ uint8_t Fu8__make_arp_poisoning(struct cstc_malcolm_data *ptr_cstc_pssd_malcolm_
             */
             }
 
+        printf("AAAAAAAA receve packet\n");
         /**
         * Check if the packet receve is bigger or equals than an ARP packet
         */
@@ -2224,14 +2225,16 @@ uint8_t Fu8__make_arp_poisoning(struct cstc_malcolm_data *ptr_cstc_pssd_malcolm_
             /**
             * Treat the case when the packet receve is bigger or equals than an ARP packet
             */
+            printf("AAAAAAAA bigger or equals to arp packet\n");
 
             ptr_estc_lcl_ether_header = (struct ether_header *) u8_lcl_packet;
             ptr_estc_lcl_ether_arp    = (struct ether_arp *) (u8_lcl_packet + sizeof(struct ether_header));
 
+            printf("AAAAAAAA eth arp %d, arp request %d, target address %u.%u.%u.%u, source address %u.%u.%u.%u\n", ntohs(ptr_estc_lcl_ether_header->ether_type) == ETH_P_ARP, ntohs(ptr_estc_lcl_ether_arp->ea_hdr.ar_op) == ARPOP_REQUEST, ((uint8_t*) ptr_estc_lcl_ether_arp->arp_tpa)[0], ((uint8_t*) ptr_estc_lcl_ether_arp->arp_tpa)[1], ((uint8_t*) ptr_estc_lcl_ether_arp->arp_tpa)[2], ((uint8_t*) ptr_estc_lcl_ether_arp->arp_tpa)[3], ((uint8_t*) ptr_estc_lcl_ether_arp->arp_spa)[0], ((uint8_t*) ptr_estc_lcl_ether_arp->arp_spa)[1], ((uint8_t*) ptr_estc_lcl_ether_arp->arp_spa)[2], ((uint8_t*) ptr_estc_lcl_ether_arp->arp_spa)[3]);
             /**
             * Check if the actual packet receve is an arp request packet from the source ip passed in the first argument of the program to the target ip passed in the third argument of the program
             */
-            if((ntohs(ptr_estc_lcl_ether_header->ether_type) == ETH_P_ARP) && (ntohs(ptr_estc_lcl_ether_arp->ea_hdr.ar_op) == ARPOP_REQUEST) && *((uint32_t *) ptr_estc_lcl_ether_arp->arp_tpa) == *((uint32_t *) ptr_cstc_pssd_malcolm_data->u8_source_ip_addr_) && *((uint32_t *) ptr_estc_lcl_ether_arp->arp_spa) == *((uint32_t *) ptr_cstc_pssd_malcolm_data->u8_target_ip_addr_))
+            if((ntohs(ptr_estc_lcl_ether_header->ether_type) == ETH_P_ARP) && (ntohs(ptr_estc_lcl_ether_arp->ea_hdr.ar_op) == ARPOP_REQUEST) && *((uint32_t *) ptr_estc_lcl_ether_arp->arp_spa) == *((uint32_t *) ptr_cstc_pssd_malcolm_data->u8_source_ip_addr_) && *((uint32_t *) ptr_estc_lcl_ether_arp->arp_tpa) == *((uint32_t *) ptr_cstc_pssd_malcolm_data->u8_target_ip_addr_))
                 {
                 /**
                 * Treat the case when the actual packet receve is an arp request packet from the source ip passed in the first argument of the program to the target ip passed in the third argument of the program
