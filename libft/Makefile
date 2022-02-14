@@ -91,9 +91,6 @@ fclean: clean
 $(NAME): $(OBJ)
 	@$(MAKE) -C $(LIB_DIR) --no-print-directory
 	@ar rcT $(NAME) $(OBJ) $(LIB)
-	@echo
-	@echo '  LIBFT END'
-	@echo
 
 re:	fclean $(NAME)
 

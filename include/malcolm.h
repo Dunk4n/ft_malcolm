@@ -25,6 +25,10 @@
 # include <linux/if_packet.h>
 # include <net/ethernet.h>
 # include <arpa/inet.h>
+# include <sys/types.h>
+# include <ifaddrs.h>
+# include <netinet/if_ether.h>
+# include <net/if.h>
 
 # include "../libft/libft.h"
 
@@ -104,9 +108,10 @@ const   uint8_t *malcolm_simple_options[MALCOLM_SIMPLE_OPTION_NUMBER];
 
 const   uint8_t *malcolm_argument_options[MALCOLM_ARGUMENT_OPTION_NUMBER];
 
-# define MAC_ADDRESS_BYTE_LEN (6)
-# define IP_ADDRESS_BYTE_LEN  (4)
-# define PACKET_MAX_LEN       (1000)
+# define MAC_ADDRESS_BYTE_LEN    (6)
+# define IP_ADDRESS_BYTE_LEN     (4)
+# define MAX_INTERFACE_NAME_LEN  (20)
+# define PACKET_MAX_LEN          (1000)
 
 struct  cstc_malcolm_data
 {
@@ -119,6 +124,8 @@ struct  cstc_malcolm_data
     uint8_t              u8_source_mac_addr_[MAC_ADDRESS_BYTE_LEN];
     uint8_t              u8_target_ip_addr_[IP_ADDRESS_BYTE_LEN];
     uint8_t              u8_target_mac_addr_[MAC_ADDRESS_BYTE_LEN];
+    uint8_t              u8_interface_mac_addr_[MAC_ADDRESS_BYTE_LEN];
+    uint8_t              u8_interface_name_str_[MAX_INTERFACE_NAME_LEN];
     int                  s32_socket_;
 };
 
@@ -146,10 +153,6 @@ uint8_t Fu8__copying_string_to_allocated_string(uint8_t *ptr_u8_pssd_source_str,
 /**
 * FAKE
 */
-# include <sys/socket.h>
-# include <sys/types.h>
-# include <ifaddrs.h>
-# include <netinet/if_ether.h>
 //struct sockaddr_ll
 //{
 //           unsigned short sll_family;   /* Always AF_PACKET */
