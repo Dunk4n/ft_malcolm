@@ -16,6 +16,7 @@ void    fv__help(void)
     {
     ft_printf("usage: ft_malcolm [OPTIONS] SRC_IP SRC_MAC TARGET_IP TARGET_MAC\n");
     ft_printf("\nOPTIONS:\n");
-    ft_printf("    -b       send bi-directional spoof\n");
+    ft_printf("    -c       display color in message\n");
+    ft_printf("    -v       display additional ARP packet information\n");
     ft_printf("    -t sec   timeout seconds to wait for reply\n");
     }

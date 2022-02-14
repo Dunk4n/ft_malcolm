@@ -960,17 +960,17 @@ uint8_t Fu8__get_ip_from_string(uint8_t *ptr_u8_pssd_ip, uint8_t *ptr_u8_pssd_ip
             * Treat the case when the number of character in the actual block ip is zero
             */
 
-            #ifdef DEVELOPEMENT
-            fprintf(stderr, "\033[1;31mERROR\033[0m: in file \033[1m%s\033[0m in function \033[1m%s\033[0m at line \033[1m%d\033[0m\n    the number of character in the actual block ip is zero\n", __FILE__, __func__, __LINE__);
-            #endif
+            //#ifdef DEVELOPEMENT
+            //fprintf(stderr, "\033[1;31mERROR\033[0m: in file \033[1m%s\033[0m in function \033[1m%s\033[0m at line \033[1m%d\033[0m\n    the number of character in the actual block ip is zero\n", __FILE__, __func__, __LINE__);
+            //#endif
 
-            #ifdef DEMO
-            fprintf(stderr, "\033[1;31mERROR\033[0m: in file \033[1m%s\033[0m at line \033[1m%s\033[0m\n", __FILE__, __LINE__);
-            #endif
+            //#ifdef DEMO
+            //fprintf(stderr, "\033[1;31mERROR\033[0m: in file \033[1m%s\033[0m at line \033[1m%s\033[0m\n", __FILE__, __LINE__);
+            //#endif
 
-            #ifdef PRODUCTION
-            fprintf(stderr, "\033[1;31mERROR\033[0m\n");
-            #endif
+            //#ifdef PRODUCTION
+            //fprintf(stderr, "\033[1;31mERROR\033[0m\n");
+            //#endif
 
             /**
             * Return failure to indicate the number of character in the actual block ip is zero
@@ -993,17 +993,17 @@ uint8_t Fu8__get_ip_from_string(uint8_t *ptr_u8_pssd_ip, uint8_t *ptr_u8_pssd_ip
             * Treat the case when the character after a block in ip address is not a '.' and not a NIL
             */
 
-            #ifdef DEVELOPEMENT
-            fprintf(stderr, "\033[1;31mERROR\033[0m: in file \033[1m%s\033[0m in function \033[1m%s\033[0m at line \033[1m%d\033[0m\n    the character after a block in ip address is not a '.' and not a NIL\n", __FILE__, __func__, __LINE__);
-            #endif
+            //#ifdef DEVELOPEMENT
+            //fprintf(stderr, "\033[1;31mERROR\033[0m: in file \033[1m%s\033[0m in function \033[1m%s\033[0m at line \033[1m%d\033[0m\n    the character after a block in ip address is not a '.' and not a NIL\n", __FILE__, __func__, __LINE__);
+            //#endif
 
-            #ifdef DEMO
-            fprintf(stderr, "\033[1;31mERROR\033[0m: in file \033[1m%s\033[0m at line \033[1m%s\033[0m\n", __FILE__, __LINE__);
-            #endif
+            //#ifdef DEMO
+            //fprintf(stderr, "\033[1;31mERROR\033[0m: in file \033[1m%s\033[0m at line \033[1m%s\033[0m\n", __FILE__, __LINE__);
+            //#endif
 
-            #ifdef PRODUCTION
-            fprintf(stderr, "\033[1;31mERROR\033[0m\n");
-            #endif
+            //#ifdef PRODUCTION
+            //fprintf(stderr, "\033[1;31mERROR\033[0m\n");
+            //#endif
 
             /**
             * Return failure to indicate the character after a block in ip address is not a '.' and not a NIL
@@ -1028,17 +1028,17 @@ uint8_t Fu8__get_ip_from_string(uint8_t *ptr_u8_pssd_ip, uint8_t *ptr_u8_pssd_ip
             * Treat the case when the actual ip block is over the maximun value
             */
 
-            #ifdef DEVELOPEMENT
-            fprintf(stderr, "\033[1;31mERROR\033[0m: in file \033[1m%s\033[0m in function \033[1m%s\033[0m at line \033[1m%d\033[0m\n    the actual ip block is over the maximun value\n", __FILE__, __func__, __LINE__);
-            #endif
+            //#ifdef DEVELOPEMENT
+            //fprintf(stderr, "\033[1;31mERROR\033[0m: in file \033[1m%s\033[0m in function \033[1m%s\033[0m at line \033[1m%d\033[0m\n    the actual ip block is over the maximun value\n", __FILE__, __func__, __LINE__);
+            //#endif
 
-            #ifdef DEMO
-            fprintf(stderr, "\033[1;31mERROR\033[0m: in file \033[1m%s\033[0m at line \033[1m%s\033[0m\n", __FILE__, __LINE__);
-            #endif
+            //#ifdef DEMO
+            //fprintf(stderr, "\033[1;31mERROR\033[0m: in file \033[1m%s\033[0m at line \033[1m%s\033[0m\n", __FILE__, __LINE__);
+            //#endif
 
-            #ifdef PRODUCTION
-            fprintf(stderr, "\033[1;31mERROR\033[0m\n");
-            #endif
+            //#ifdef PRODUCTION
+            //fprintf(stderr, "\033[1;31mERROR\033[0m\n");
+            //#endif
 
             /**
             * Return failure to indicate the actual ip block is over the maximun value
@@ -1063,17 +1063,17 @@ uint8_t Fu8__get_ip_from_string(uint8_t *ptr_u8_pssd_ip, uint8_t *ptr_u8_pssd_ip
             * Treat the case when the addition of the position in the ip string with the counter overflow
             */
 
-            #ifdef DEVELOPEMENT
-            fprintf(stderr, "\033[1;31mERROR\033[0m: in file \033[1m%s\033[0m in function \033[1m%s\033[0m at line \033[1m%d\033[0m\n    the addition of the position in the ip string with the counter overflow\n", __FILE__, __func__, __LINE__);
-            #endif
+            //#ifdef DEVELOPEMENT
+            //fprintf(stderr, "\033[1;31mERROR\033[0m: in file \033[1m%s\033[0m in function \033[1m%s\033[0m at line \033[1m%d\033[0m\n    the addition of the position in the ip string with the counter overflow\n", __FILE__, __func__, __LINE__);
+            //#endif
 
-            #ifdef DEMO
-            fprintf(stderr, "\033[1;31mERROR\033[0m: in file \033[1m%s\033[0m at line \033[1m%s\033[0m\n", __FILE__, __LINE__);
-            #endif
+            //#ifdef DEMO
+            //fprintf(stderr, "\033[1;31mERROR\033[0m: in file \033[1m%s\033[0m at line \033[1m%s\033[0m\n", __FILE__, __LINE__);
+            //#endif
 
-            #ifdef PRODUCTION
-            fprintf(stderr, "\033[1;31mERROR\033[0m\n");
-            #endif
+            //#ifdef PRODUCTION
+            //fprintf(stderr, "\033[1;31mERROR\033[0m\n");
+            //#endif
 
             /**
             * Return failure to indicate the addition of the position in the ip string with the counter overflow
@@ -1169,17 +1169,17 @@ uint8_t Fu8__get_ip_from_string(uint8_t *ptr_u8_pssd_ip, uint8_t *ptr_u8_pssd_ip
         * Treat the case when the end character of the ip string is not a NIL character
         */
 
-        #ifdef DEVELOPEMENT
-        fprintf(stderr, "\033[1;31mERROR\033[0m: in file \033[1m%s\033[0m in function \033[1m%s\033[0m at line \033[1m%d\033[0m\n    the end character of the ip string is not a NIL character\n", __FILE__, __func__, __LINE__);
-        #endif
+        //#ifdef DEVELOPEMENT
+        //fprintf(stderr, "\033[1;31mERROR\033[0m: in file \033[1m%s\033[0m in function \033[1m%s\033[0m at line \033[1m%d\033[0m\n    the end character of the ip string is not a NIL character\n", __FILE__, __func__, __LINE__);
+        //#endif
 
-        #ifdef DEMO
-        fprintf(stderr, "\033[1;31mERROR\033[0m: in file \033[1m%s\033[0m at line \033[1m%s\033[0m\n", __FILE__, __LINE__);
-        #endif
+        //#ifdef DEMO
+        //fprintf(stderr, "\033[1;31mERROR\033[0m: in file \033[1m%s\033[0m at line \033[1m%s\033[0m\n", __FILE__, __LINE__);
+        //#endif
 
-        #ifdef PRODUCTION
-        fprintf(stderr, "\033[1;31mERROR\033[0m\n");
-        #endif
+        //#ifdef PRODUCTION
+        //fprintf(stderr, "\033[1;31mERROR\033[0m\n");
+        //#endif
 
         /**
         * Return failure to indicate the end character of the ip string is not a NIL character
@@ -1202,17 +1202,17 @@ uint8_t Fu8__get_ip_from_string(uint8_t *ptr_u8_pssd_ip, uint8_t *ptr_u8_pssd_ip
         * Treat the case when the number of address block is not four
         */
 
-        #ifdef DEVELOPEMENT
-        fprintf(stderr, "\033[1;31mERROR\033[0m: in file \033[1m%s\033[0m in function \033[1m%s\033[0m at line \033[1m%d\033[0m\n    the number of address block is not four\n", __FILE__, __func__, __LINE__);
-        #endif
+        //#ifdef DEVELOPEMENT
+        //fprintf(stderr, "\033[1;31mERROR\033[0m: in file \033[1m%s\033[0m in function \033[1m%s\033[0m at line \033[1m%d\033[0m\n    the number of address block is not four\n", __FILE__, __func__, __LINE__);
+        //#endif
 
-        #ifdef DEMO
-        fprintf(stderr, "\033[1;31mERROR\033[0m: in file \033[1m%s\033[0m at line \033[1m%s\033[0m\n", __FILE__, __LINE__);
-        #endif
+        //#ifdef DEMO
+        //fprintf(stderr, "\033[1;31mERROR\033[0m: in file \033[1m%s\033[0m at line \033[1m%s\033[0m\n", __FILE__, __LINE__);
+        //#endif
 
-        #ifdef PRODUCTION
-        fprintf(stderr, "\033[1;31mERROR\033[0m\n");
-        #endif
+        //#ifdef PRODUCTION
+        //fprintf(stderr, "\033[1;31mERROR\033[0m\n");
+        //#endif
 
         /**
         * Return failure to indicate the number of address block is not four
@@ -1360,17 +1360,17 @@ uint8_t Fu8__get_mac_from_string(uint8_t *ptr_u8_pssd_mac, uint8_t *ptr_u8_pssd_
             * Treat the case when the number of character in the actual block mac is zero
             */
 
-            #ifdef DEVELOPEMENT
-            fprintf(stderr, "\033[1;31mERROR\033[0m: in file \033[1m%s\033[0m in function \033[1m%s\033[0m at line \033[1m%d\033[0m\n    the number of character in the actual block mac is zero\n", __FILE__, __func__, __LINE__);
-            #endif
+            //#ifdef DEVELOPEMENT
+            //fprintf(stderr, "\033[1;31mERROR\033[0m: in file \033[1m%s\033[0m in function \033[1m%s\033[0m at line \033[1m%d\033[0m\n    the number of character in the actual block mac is zero\n", __FILE__, __func__, __LINE__);
+            //#endif
 
-            #ifdef DEMO
-            fprintf(stderr, "\033[1;31mERROR\033[0m: in file \033[1m%s\033[0m at line \033[1m%s\033[0m\n", __FILE__, __LINE__);
-            #endif
+            //#ifdef DEMO
+            //fprintf(stderr, "\033[1;31mERROR\033[0m: in file \033[1m%s\033[0m at line \033[1m%s\033[0m\n", __FILE__, __LINE__);
+            //#endif
 
-            #ifdef PRODUCTION
-            fprintf(stderr, "\033[1;31mERROR\033[0m\n");
-            #endif
+            //#ifdef PRODUCTION
+            //fprintf(stderr, "\033[1;31mERROR\033[0m\n");
+            //#endif
 
             /**
             * Return failure to indicate the number of character in the actual block mac is zero
@@ -1393,17 +1393,17 @@ uint8_t Fu8__get_mac_from_string(uint8_t *ptr_u8_pssd_mac, uint8_t *ptr_u8_pssd_
             * Treat the case when the character after a block in mac address is not a ':' and not a NIL
             */
 
-            #ifdef DEVELOPEMENT
-            fprintf(stderr, "\033[1;31mERROR\033[0m: in file \033[1m%s\033[0m in function \033[1m%s\033[0m at line \033[1m%d\033[0m\n    the character after a block in mac address is not a ':' and not a NIL\n", __FILE__, __func__, __LINE__);
-            #endif
+            //#ifdef DEVELOPEMENT
+            //fprintf(stderr, "\033[1;31mERROR\033[0m: in file \033[1m%s\033[0m in function \033[1m%s\033[0m at line \033[1m%d\033[0m\n    the character after a block in mac address is not a ':' and not a NIL\n", __FILE__, __func__, __LINE__);
+            //#endif
 
-            #ifdef DEMO
-            fprintf(stderr, "\033[1;31mERROR\033[0m: in file \033[1m%s\033[0m at line \033[1m%s\033[0m\n", __FILE__, __LINE__);
-            #endif
+            //#ifdef DEMO
+            //fprintf(stderr, "\033[1;31mERROR\033[0m: in file \033[1m%s\033[0m at line \033[1m%s\033[0m\n", __FILE__, __LINE__);
+            //#endif
 
-            #ifdef PRODUCTION
-            fprintf(stderr, "\033[1;31mERROR\033[0m\n");
-            #endif
+            //#ifdef PRODUCTION
+            //fprintf(stderr, "\033[1;31mERROR\033[0m\n");
+            //#endif
 
             /**
             * Return failure to indicate the character after a block in mac address is not a ':' and not a NIL
@@ -1428,17 +1428,17 @@ uint8_t Fu8__get_mac_from_string(uint8_t *ptr_u8_pssd_mac, uint8_t *ptr_u8_pssd_
             * Treat the case when the actual mac block is over the maximun value
             */
 
-            #ifdef DEVELOPEMENT
-            fprintf(stderr, "\033[1;31mERROR\033[0m: in file \033[1m%s\033[0m in function \033[1m%s\033[0m at line \033[1m%d\033[0m\n    the actual mac block is over the maximun value\n", __FILE__, __func__, __LINE__);
-            #endif
+            //#ifdef DEVELOPEMENT
+            //fprintf(stderr, "\033[1;31mERROR\033[0m: in file \033[1m%s\033[0m in function \033[1m%s\033[0m at line \033[1m%d\033[0m\n    the actual mac block is over the maximun value\n", __FILE__, __func__, __LINE__);
+            //#endif
 
-            #ifdef DEMO
-            fprintf(stderr, "\033[1;31mERROR\033[0m: in file \033[1m%s\033[0m at line \033[1m%s\033[0m\n", __FILE__, __LINE__);
-            #endif
+            //#ifdef DEMO
+            //fprintf(stderr, "\033[1;31mERROR\033[0m: in file \033[1m%s\033[0m at line \033[1m%s\033[0m\n", __FILE__, __LINE__);
+            //#endif
 
-            #ifdef PRODUCTION
-            fprintf(stderr, "\033[1;31mERROR\033[0m\n");
-            #endif
+            //#ifdef PRODUCTION
+            //fprintf(stderr, "\033[1;31mERROR\033[0m\n");
+            //#endif
 
             /**
             * Return failure to indicate the actual mac block is over the maximun value
@@ -1463,17 +1463,17 @@ uint8_t Fu8__get_mac_from_string(uint8_t *ptr_u8_pssd_mac, uint8_t *ptr_u8_pssd_
             * Treat the case when the addition of the position in the mac string with the counter overflow
             */
 
-            #ifdef DEVELOPEMENT
-            fprintf(stderr, "\033[1;31mERROR\033[0m: in file \033[1m%s\033[0m in function \033[1m%s\033[0m at line \033[1m%d\033[0m\n    the addition of the position in the mac string with the counter overflow\n", __FILE__, __func__, __LINE__);
-            #endif
+            //#ifdef DEVELOPEMENT
+            //fprintf(stderr, "\033[1;31mERROR\033[0m: in file \033[1m%s\033[0m in function \033[1m%s\033[0m at line \033[1m%d\033[0m\n    the addition of the position in the mac string with the counter overflow\n", __FILE__, __func__, __LINE__);
+            //#endif
 
-            #ifdef DEMO
-            fprintf(stderr, "\033[1;31mERROR\033[0m: in file \033[1m%s\033[0m at line \033[1m%s\033[0m\n", __FILE__, __LINE__);
-            #endif
+            //#ifdef DEMO
+            //fprintf(stderr, "\033[1;31mERROR\033[0m: in file \033[1m%s\033[0m at line \033[1m%s\033[0m\n", __FILE__, __LINE__);
+            //#endif
 
-            #ifdef PRODUCTION
-            fprintf(stderr, "\033[1;31mERROR\033[0m\n");
-            #endif
+            //#ifdef PRODUCTION
+            //fprintf(stderr, "\033[1;31mERROR\033[0m\n");
+            //#endif
 
             /**
             * Return failure to indicate the addition of the position in the mac string with the counter overflow
@@ -1569,17 +1569,17 @@ uint8_t Fu8__get_mac_from_string(uint8_t *ptr_u8_pssd_mac, uint8_t *ptr_u8_pssd_
         * Treat the case when the end character of the mac string is not a NIL character
         */
 
-        #ifdef DEVELOPEMENT
-        fprintf(stderr, "\033[1;31mERROR\033[0m: in file \033[1m%s\033[0m in function \033[1m%s\033[0m at line \033[1m%d\033[0m\n    the end character of the mac string is not a NIL character\n", __FILE__, __func__, __LINE__);
-        #endif
+        //#ifdef DEVELOPEMENT
+        //fprintf(stderr, "\033[1;31mERROR\033[0m: in file \033[1m%s\033[0m in function \033[1m%s\033[0m at line \033[1m%d\033[0m\n    the end character of the mac string is not a NIL character\n", __FILE__, __func__, __LINE__);
+        //#endif
 
-        #ifdef DEMO
-        fprintf(stderr, "\033[1;31mERROR\033[0m: in file \033[1m%s\033[0m at line \033[1m%s\033[0m\n", __FILE__, __LINE__);
-        #endif
+        //#ifdef DEMO
+        //fprintf(stderr, "\033[1;31mERROR\033[0m: in file \033[1m%s\033[0m at line \033[1m%s\033[0m\n", __FILE__, __LINE__);
+        //#endif
 
-        #ifdef PRODUCTION
-        fprintf(stderr, "\033[1;31mERROR\033[0m\n");
-        #endif
+        //#ifdef PRODUCTION
+        //fprintf(stderr, "\033[1;31mERROR\033[0m\n");
+        //#endif
 
         /**
         * Return failure to indicate the end character of the mac string is not a NIL character
@@ -1602,17 +1602,17 @@ uint8_t Fu8__get_mac_from_string(uint8_t *ptr_u8_pssd_mac, uint8_t *ptr_u8_pssd_
         * Treat the case when the number of address block in mac string is not four
         */
 
-        #ifdef DEVELOPEMENT
-        fprintf(stderr, "\033[1;31mERROR\033[0m: in file \033[1m%s\033[0m in function \033[1m%s\033[0m at line \033[1m%d\033[0m\n    the number of address block in mac string is not four\n", __FILE__, __func__, __LINE__);
-        #endif
+        //#ifdef DEVELOPEMENT
+        //fprintf(stderr, "\033[1;31mERROR\033[0m: in file \033[1m%s\033[0m in function \033[1m%s\033[0m at line \033[1m%d\033[0m\n    the number of address block in mac string is not four\n", __FILE__, __func__, __LINE__);
+        //#endif
 
-        #ifdef DEMO
-        fprintf(stderr, "\033[1;31mERROR\033[0m: in file \033[1m%s\033[0m at line \033[1m%s\033[0m\n", __FILE__, __LINE__);
-        #endif
+        //#ifdef DEMO
+        //fprintf(stderr, "\033[1;31mERROR\033[0m: in file \033[1m%s\033[0m at line \033[1m%s\033[0m\n", __FILE__, __LINE__);
+        //#endif
 
-        #ifdef PRODUCTION
-        fprintf(stderr, "\033[1;31mERROR\033[0m\n");
-        #endif
+        //#ifdef PRODUCTION
+        //fprintf(stderr, "\033[1;31mERROR\033[0m\n");
+        //#endif
 
         /**
         * Return failure to indicate the number of address block in mac string is not four
@@ -1641,6 +1641,8 @@ void Fv__close_all_data_and_exit(int signal __attribute__((unused)))
     */
     u8_lcl_return_from_function = 0;
 
+    ft_printf("Exiting program...\n");
+
     /**
     * Check if the global address to the structure malcolm data is not correctly pointing
     */
@@ -1661,8 +1663,6 @@ void Fv__close_all_data_and_exit(int signal __attribute__((unused)))
         * Treat the case when the global address to the structure malcolm data is correctly pointing
         */
         }
-
-    (void) Fv__display_structure_malcolm_data(ptr_cstc_gbl_malcolm_data);
 
     /**
     * Check if the global structure malcolm data is initialized
@@ -1881,17 +1881,26 @@ uint8_t Fu8__get_value_from_argument_data(struct cstc_malcolm_data *ptr_cstc_pss
         * Treat the case when the function to get the value of the source ip from the argument failed
         */
 
-        #ifdef DEVELOPEMENT
-        fprintf(stderr, "\033[1;31mERROR\033[0m: in file \033[1m%s\033[0m in function \033[1m%s\033[0m at line \033[1m%d\033[0m\n    The function to get the value of the source ip from the argument failed\n", __FILE__, __func__, __LINE__);
-        #endif
+        //#ifdef DEVELOPEMENT
+        //fprintf(stderr, "\033[1;31mERROR\033[0m: in file \033[1m%s\033[0m in function \033[1m%s\033[0m at line \033[1m%d\033[0m\n    The function to get the value of the source ip from the argument failed\n", __FILE__, __func__, __LINE__);
+        //#endif
 
-        #ifdef DEMO
-        fprintf(stderr, "\033[1;31mERROR\033[0m: in file \033[1m%s\033[0m at line \033[1m%s\033[0m\n", __FILE__, __LINE__);
-        #endif
+        //#ifdef DEMO
+        //fprintf(stderr, "\033[1;31mERROR\033[0m: in file \033[1m%s\033[0m at line \033[1m%s\033[0m\n", __FILE__, __LINE__);
+        //#endif
 
-        #ifdef PRODUCTION
-        fprintf(stderr, "\033[1;31mERROR\033[0m\n");
-        #endif
+        //#ifdef PRODUCTION
+        //fprintf(stderr, "\033[1;31mERROR\033[0m\n");
+        //#endif
+
+        if(ptr_cstc_pssd_malcolm_data->sstc_program_argument_.u8_simple_options_[MALCOLM_COLOR] != FALSE)
+            {
+            ft_fprintf(STDERR_FILENO, "\033[31;1mft_malcolm\033[0m: unknown host or invalid IP address: (\033[31;1m%s\033[0m).\n", ptr_cstc_pssd_malcolm_data->sstc_program_argument_.dbl_ptr_u8_ip_or_mac_address_str_[0]);
+            }
+        else
+            {
+            ft_fprintf(STDERR_FILENO, "ft_malcolm: unknown host or invalid IP address: (%s).\n", ptr_cstc_pssd_malcolm_data->sstc_program_argument_.dbl_ptr_u8_ip_or_mac_address_str_[0]);
+            }
 
         /**
         * Return failure to indicate the function to get the value of the source ip from the argument failed
@@ -1920,17 +1929,26 @@ uint8_t Fu8__get_value_from_argument_data(struct cstc_malcolm_data *ptr_cstc_pss
         * Treat the case when the function to get the value of the source mac from the argument failed
         */
 
-        #ifdef DEVELOPEMENT
-        fprintf(stderr, "\033[1;31mERROR\033[0m: in file \033[1m%s\033[0m in function \033[1m%s\033[0m at line \033[1m%d\033[0m\n    The function to get the value of the source mac from the argument failed\n", __FILE__, __func__, __LINE__);
-        #endif
+        //#ifdef DEVELOPEMENT
+        //fprintf(stderr, "\033[1;31mERROR\033[0m: in file \033[1m%s\033[0m in function \033[1m%s\033[0m at line \033[1m%d\033[0m\n    The function to get the value of the source mac from the argument failed\n", __FILE__, __func__, __LINE__);
+        //#endif
 
-        #ifdef DEMO
-        fprintf(stderr, "\033[1;31mERROR\033[0m: in file \033[1m%s\033[0m at line \033[1m%s\033[0m\n", __FILE__, __LINE__);
-        #endif
+        //#ifdef DEMO
+        //fprintf(stderr, "\033[1;31mERROR\033[0m: in file \033[1m%s\033[0m at line \033[1m%s\033[0m\n", __FILE__, __LINE__);
+        //#endif
 
-        #ifdef PRODUCTION
-        fprintf(stderr, "\033[1;31mERROR\033[0m\n");
-        #endif
+        //#ifdef PRODUCTION
+        //fprintf(stderr, "\033[1;31mERROR\033[0m\n");
+        //#endif
+
+        if(ptr_cstc_pssd_malcolm_data->sstc_program_argument_.u8_simple_options_[MALCOLM_COLOR] != FALSE)
+            {
+            ft_fprintf(STDERR_FILENO, "\033[31;1mft_malcolm\033[0m: invalid mac address: (\033[31;1m%s\033[0m)\n", ptr_cstc_pssd_malcolm_data->sstc_program_argument_.dbl_ptr_u8_ip_or_mac_address_str_[1]);
+            }
+        else
+            {
+            ft_fprintf(STDERR_FILENO, "ft_malcolm: invalid mac address: (%s)\n", ptr_cstc_pssd_malcolm_data->sstc_program_argument_.dbl_ptr_u8_ip_or_mac_address_str_[1]);
+            }
 
         /**
         * Return failure to indicate the function to get the value of the source mac from the argument failed
@@ -1959,17 +1977,26 @@ uint8_t Fu8__get_value_from_argument_data(struct cstc_malcolm_data *ptr_cstc_pss
         * Treat the case when the function to get the value of the target ip from the argument failed
         */
 
-        #ifdef DEVELOPEMENT
-        fprintf(stderr, "\033[1;31mERROR\033[0m: in file \033[1m%s\033[0m in function \033[1m%s\033[0m at line \033[1m%d\033[0m\n    The function to get the value of the target ip from the argument failed\n", __FILE__, __func__, __LINE__);
-        #endif
+        //#ifdef DEVELOPEMENT
+        //fprintf(stderr, "\033[1;31mERROR\033[0m: in file \033[1m%s\033[0m in function \033[1m%s\033[0m at line \033[1m%d\033[0m\n    The function to get the value of the target ip from the argument failed\n", __FILE__, __func__, __LINE__);
+        //#endif
 
-        #ifdef DEMO
-        fprintf(stderr, "\033[1;31mERROR\033[0m: in file \033[1m%s\033[0m at line \033[1m%s\033[0m\n", __FILE__, __LINE__);
-        #endif
+        //#ifdef DEMO
+        //fprintf(stderr, "\033[1;31mERROR\033[0m: in file \033[1m%s\033[0m at line \033[1m%s\033[0m\n", __FILE__, __LINE__);
+        //#endif
 
-        #ifdef PRODUCTION
-        fprintf(stderr, "\033[1;31mERROR\033[0m\n");
-        #endif
+        //#ifdef PRODUCTION
+        //fprintf(stderr, "\033[1;31mERROR\033[0m\n");
+        //#endif
+
+        if(ptr_cstc_pssd_malcolm_data->sstc_program_argument_.u8_simple_options_[MALCOLM_COLOR] != FALSE)
+            {
+            ft_fprintf(STDERR_FILENO, "\033[31;1mft_malcolm\033[0m: unknown host or invalid IP address: (\033[31;1m%s\033[0m).\n", ptr_cstc_pssd_malcolm_data->sstc_program_argument_.dbl_ptr_u8_ip_or_mac_address_str_[2]);
+            }
+        else
+            {
+            ft_fprintf(STDERR_FILENO, "ft_malcolm: unknown host or invalid IP address: (%s).\n", ptr_cstc_pssd_malcolm_data->sstc_program_argument_.dbl_ptr_u8_ip_or_mac_address_str_[2]);
+            }
 
         /**
         * Return failure to indicate the function to get the value of the target ip from the argument failed
@@ -1998,17 +2025,26 @@ uint8_t Fu8__get_value_from_argument_data(struct cstc_malcolm_data *ptr_cstc_pss
         * Treat the case when the function to get the value of the target mac from the argument failed
         */
 
-        #ifdef DEVELOPEMENT
-        fprintf(stderr, "\033[1;31mERROR\033[0m: in file \033[1m%s\033[0m in function \033[1m%s\033[0m at line \033[1m%d\033[0m\n    The function to get the value of the target mac from the argument failed\n", __FILE__, __func__, __LINE__);
-        #endif
+        //#ifdef DEVELOPEMENT
+        //fprintf(stderr, "\033[1;31mERROR\033[0m: in file \033[1m%s\033[0m in function \033[1m%s\033[0m at line \033[1m%d\033[0m\n    The function to get the value of the target mac from the argument failed\n", __FILE__, __func__, __LINE__);
+        //#endif
 
-        #ifdef DEMO
-        fprintf(stderr, "\033[1;31mERROR\033[0m: in file \033[1m%s\033[0m at line \033[1m%s\033[0m\n", __FILE__, __LINE__);
-        #endif
+        //#ifdef DEMO
+        //fprintf(stderr, "\033[1;31mERROR\033[0m: in file \033[1m%s\033[0m at line \033[1m%s\033[0m\n", __FILE__, __LINE__);
+        //#endif
 
-        #ifdef PRODUCTION
-        fprintf(stderr, "\033[1;31mERROR\033[0m\n");
-        #endif
+        //#ifdef PRODUCTION
+        //fprintf(stderr, "\033[1;31mERROR\033[0m\n");
+        //#endif
+
+        if(ptr_cstc_pssd_malcolm_data->sstc_program_argument_.u8_simple_options_[MALCOLM_COLOR] != FALSE)
+            {
+            ft_fprintf(STDERR_FILENO, "\033[31;1mft_malcolm\033[0m: invalid mac address: (\033[31;1m%s\033[0m)\n", ptr_cstc_pssd_malcolm_data->sstc_program_argument_.dbl_ptr_u8_ip_or_mac_address_str_[3]);
+            }
+        else
+            {
+            ft_fprintf(STDERR_FILENO, "ft_malcolm: invalid mac address: (%s)\n", ptr_cstc_pssd_malcolm_data->sstc_program_argument_.dbl_ptr_u8_ip_or_mac_address_str_[3]);
+            }
 
         /**
         * Return failure to indicate the function to get the value of the target mac from the argument failed
@@ -2298,7 +2334,6 @@ uint8_t Fu8__get_valid_interface(struct cstc_malcolm_data *ptr_cstc_pssd_malcolm
         */
         } 
 
-
     /**
     * Creation of local variable
     */
@@ -2360,7 +2395,14 @@ uint8_t Fu8__get_valid_interface(struct cstc_malcolm_data *ptr_cstc_pssd_malcolm
         {
         if((ptr_estc_lcl_actual_network_interfaces->ifa_addr->sa_family == AF_PACKET) && (ptr_estc_lcl_actual_network_interfaces->ifa_name != NULL) && (ptr_estc_lcl_actual_network_interfaces->ifa_addr != NULL) && ((ptr_estc_lcl_actual_network_interfaces->ifa_flags & IFF_UP) != FALSE) && ((ptr_estc_lcl_actual_network_interfaces->ifa_flags & IFF_BROADCAST) != FALSE) && ((ptr_estc_lcl_actual_network_interfaces->ifa_flags & IFF_RUNNING) != FALSE))
             {
-            ft_printf("Found available interface: %s\n", ptr_estc_lcl_actual_network_interfaces->ifa_name);
+            if(ptr_cstc_pssd_malcolm_data->sstc_program_argument_.u8_simple_options_[MALCOLM_COLOR] != FALSE)
+                {
+                ft_printf("Found available interface: \033[32;1m%s\033[0m\n", ptr_estc_lcl_actual_network_interfaces->ifa_name);
+                }
+            else
+                {
+                ft_printf("Found available interface: %s\n", ptr_estc_lcl_actual_network_interfaces->ifa_name);
+                }
 
             /**
             * Getting the name of the actual local Network interface
@@ -2633,8 +2675,6 @@ uint8_t Fu8__make_arp_poisoning(struct cstc_malcolm_data *ptr_cstc_pssd_malcolm_
         */
         }
 
-    ft_printf("Waiting for ARP request ...\n\n");
-
     /**
     * Waiting for an arp request packet from the source ip to the target ip
     */
@@ -2783,8 +2823,6 @@ uint8_t Fu8__make_arp_poisoning(struct cstc_malcolm_data *ptr_cstc_pssd_malcolm_
             ptr_estc_lcl_ether_header = (struct ether_header *) u8_lcl_packet;
             ptr_estc_lcl_ether_arp    = (struct ether_arp *) (u8_lcl_packet + sizeof(struct ether_header));
 
-            if(ntohs(ptr_estc_lcl_ether_header->ether_type) == ETH_P_ARP)
-                printf("ARP %s from %d.%d.%d.%d for %d.%d.%d.%d\n", (ntohs(ptr_estc_lcl_ether_arp->ea_hdr.ar_op) == ARPOP_REQUEST) ? "REQUEST" : "RESPOND", ((uint8_t *)ptr_estc_lcl_ether_arp->arp_spa)[0], ((uint8_t *)ptr_estc_lcl_ether_arp->arp_spa)[1], ((uint8_t *)ptr_estc_lcl_ether_arp->arp_spa)[2], ((uint8_t *)ptr_estc_lcl_ether_arp->arp_spa)[3], ((uint8_t *)ptr_estc_lcl_ether_arp->arp_tpa)[0], ((uint8_t *)ptr_estc_lcl_ether_arp->arp_tpa)[1], ((uint8_t *)ptr_estc_lcl_ether_arp->arp_tpa)[2], ((uint8_t *)ptr_estc_lcl_ether_arp->arp_tpa)[3]);
             /**
             * Check if the actual packet receve is an arp request packet from the source ip passed in the first argument of the program to the target ip passed in the third argument of the program
             */
@@ -2793,6 +2831,11 @@ uint8_t Fu8__make_arp_poisoning(struct cstc_malcolm_data *ptr_cstc_pssd_malcolm_
                 /**
                 * Treat the case when the actual packet receve is an arp request packet from the source ip passed in the first argument of the program to the target ip passed in the third argument of the program
                 */
+
+                if(ptr_cstc_pssd_malcolm_data->sstc_program_argument_.u8_simple_options_[MALCOLM_VERBOSE] != FALSE)
+                    {
+                    ft_printf("\n\033[2mReceve an ARP request\n    SOURCE:\n     mac address of request: %.2x:%.2x:%.2x:%.2x:%.2x:%.2x\n     IP address of request: %u.%u.%u.%u\n    TARGET:\n     mac address of request: %.2x:%.2x:%.2x:%.2x:%.2x:%.2x\n     IP address of request: %u.%u.%u.%u\033[0m\n", ((uint8_t *) ptr_estc_lcl_ether_arp->arp_sha)[0], ((uint8_t *) ptr_estc_lcl_ether_arp->arp_sha)[1], ((uint8_t *) ptr_estc_lcl_ether_arp->arp_sha)[2], ((uint8_t *) ptr_estc_lcl_ether_arp->arp_sha)[3], ((uint8_t *) ptr_estc_lcl_ether_arp->arp_sha)[4], ((uint8_t *) ptr_estc_lcl_ether_arp->arp_sha)[5], ((uint8_t *) ptr_estc_lcl_ether_arp->arp_spa)[0], ((uint8_t *) ptr_estc_lcl_ether_arp->arp_spa)[1], ((uint8_t *) ptr_estc_lcl_ether_arp->arp_spa)[2], ((uint8_t *) ptr_estc_lcl_ether_arp->arp_spa)[3], ((uint8_t *) ptr_estc_lcl_ether_arp->arp_tha)[0], ((uint8_t *) ptr_estc_lcl_ether_arp->arp_tha)[1], ((uint8_t *) ptr_estc_lcl_ether_arp->arp_tha)[2], ((uint8_t *) ptr_estc_lcl_ether_arp->arp_tha)[3], ((uint8_t *) ptr_estc_lcl_ether_arp->arp_tha)[4], ((uint8_t *) ptr_estc_lcl_ether_arp->arp_tha)[5], ((uint8_t *) ptr_estc_lcl_ether_arp->arp_tpa)[0], ((uint8_t *) ptr_estc_lcl_ether_arp->arp_tpa)[1], ((uint8_t *) ptr_estc_lcl_ether_arp->arp_tpa)[2], ((uint8_t *) ptr_estc_lcl_ether_arp->arp_tpa)[3]);
+                    }
 
                 /**
                 * Stop waiting for an arp request packet from the source ip to the target ip
@@ -2804,6 +2847,18 @@ uint8_t Fu8__make_arp_poisoning(struct cstc_malcolm_data *ptr_cstc_pssd_malcolm_
                 /**
                 * Treat the case when the actual packet receve is not an arp request packet or not from the source ip passed in the first argument of the program or not to the target ip passed in the third argument of the program
                 */
+
+                if((ptr_cstc_pssd_malcolm_data->sstc_program_argument_.u8_simple_options_[MALCOLM_VERBOSE] != FALSE) && ntohs(ptr_estc_lcl_ether_header->ether_type) == ETH_P_ARP)
+                    {
+                    if(ntohs(ptr_estc_lcl_ether_arp->ea_hdr.ar_op) == ARPOP_REQUEST)
+                        {
+                        ft_printf("\n\033[2mReceve an ARP request\n    SOURCE:\n     mac address of request: %.2x:%.2x:%.2x:%.2x:%.2x:%.2x\n     IP address of request: %u.%u.%u.%u\n    TARGET:\n     mac address of request: %.2x:%.2x:%.2x:%.2x:%.2x:%.2x\n     IP address of request: %u.%u.%u.%u\033[0m\n", ((uint8_t *) ptr_estc_lcl_ether_arp->arp_sha)[0], ((uint8_t *) ptr_estc_lcl_ether_arp->arp_sha)[1], ((uint8_t *) ptr_estc_lcl_ether_arp->arp_sha)[2], ((uint8_t *) ptr_estc_lcl_ether_arp->arp_sha)[3], ((uint8_t *) ptr_estc_lcl_ether_arp->arp_sha)[4], ((uint8_t *) ptr_estc_lcl_ether_arp->arp_sha)[5], ((uint8_t *) ptr_estc_lcl_ether_arp->arp_spa)[0], ((uint8_t *) ptr_estc_lcl_ether_arp->arp_spa)[1], ((uint8_t *) ptr_estc_lcl_ether_arp->arp_spa)[2], ((uint8_t *) ptr_estc_lcl_ether_arp->arp_spa)[3], ((uint8_t *) ptr_estc_lcl_ether_arp->arp_tha)[0], ((uint8_t *) ptr_estc_lcl_ether_arp->arp_tha)[1], ((uint8_t *) ptr_estc_lcl_ether_arp->arp_tha)[2], ((uint8_t *) ptr_estc_lcl_ether_arp->arp_tha)[3], ((uint8_t *) ptr_estc_lcl_ether_arp->arp_tha)[4], ((uint8_t *) ptr_estc_lcl_ether_arp->arp_tha)[5], ((uint8_t *) ptr_estc_lcl_ether_arp->arp_tpa)[0], ((uint8_t *) ptr_estc_lcl_ether_arp->arp_tpa)[1], ((uint8_t *) ptr_estc_lcl_ether_arp->arp_tpa)[2], ((uint8_t *) ptr_estc_lcl_ether_arp->arp_tpa)[3]);
+                        }
+                    else if(ntohs(ptr_estc_lcl_ether_arp->ea_hdr.ar_op) == ARPOP_REPLY)
+                        {
+                        ft_printf("\n\033[2mReceve an ARP reply\n    SOURCE:\n     mac address of reply: %.2x:%.2x:%.2x:%.2x:%.2x:%.2x\n     IP address of reply: %u.%u.%u.%u\n    TARGET:\n     mac address of reply: %.2x:%.2x:%.2x:%.2x:%.2x:%.2x\n     IP address of reply: %u.%u.%u.%u\033[0m\n", ((uint8_t *) ptr_estc_lcl_ether_arp->arp_sha)[0], ((uint8_t *) ptr_estc_lcl_ether_arp->arp_sha)[1], ((uint8_t *) ptr_estc_lcl_ether_arp->arp_sha)[2], ((uint8_t *) ptr_estc_lcl_ether_arp->arp_sha)[3], ((uint8_t *) ptr_estc_lcl_ether_arp->arp_sha)[4], ((uint8_t *) ptr_estc_lcl_ether_arp->arp_sha)[5], ((uint8_t *) ptr_estc_lcl_ether_arp->arp_spa)[0], ((uint8_t *) ptr_estc_lcl_ether_arp->arp_spa)[1], ((uint8_t *) ptr_estc_lcl_ether_arp->arp_spa)[2], ((uint8_t *) ptr_estc_lcl_ether_arp->arp_spa)[3], ((uint8_t *) ptr_estc_lcl_ether_arp->arp_tha)[0], ((uint8_t *) ptr_estc_lcl_ether_arp->arp_tha)[1], ((uint8_t *) ptr_estc_lcl_ether_arp->arp_tha)[2], ((uint8_t *) ptr_estc_lcl_ether_arp->arp_tha)[3], ((uint8_t *) ptr_estc_lcl_ether_arp->arp_tha)[4], ((uint8_t *) ptr_estc_lcl_ether_arp->arp_tha)[5], ((uint8_t *) ptr_estc_lcl_ether_arp->arp_tpa)[0], ((uint8_t *) ptr_estc_lcl_ether_arp->arp_tpa)[1], ((uint8_t *) ptr_estc_lcl_ether_arp->arp_tpa)[2], ((uint8_t *) ptr_estc_lcl_ether_arp->arp_tpa)[3]);
+                        }
+                    }
                 }
             }
         else
@@ -2814,7 +2869,14 @@ uint8_t Fu8__make_arp_poisoning(struct cstc_malcolm_data *ptr_cstc_pssd_malcolm_
             }
         }
 
-    ft_printf("Receve an ARP request from %u.%u.%u.%u to %u.%u.%u.%u\n", ptr_cstc_pssd_malcolm_data->u8_target_ip_addr_[0], ptr_cstc_pssd_malcolm_data->u8_target_ip_addr_[1], ptr_cstc_pssd_malcolm_data->u8_target_ip_addr_[2], ptr_cstc_pssd_malcolm_data->u8_target_ip_addr_[3], ptr_cstc_pssd_malcolm_data->u8_source_ip_addr_[0], ptr_cstc_pssd_malcolm_data->u8_source_ip_addr_[1], ptr_cstc_pssd_malcolm_data->u8_source_ip_addr_[2], ptr_cstc_pssd_malcolm_data->u8_source_ip_addr_[3]);
+    if(ptr_cstc_pssd_malcolm_data->sstc_program_argument_.u8_simple_options_[MALCOLM_COLOR] != FALSE)
+        {
+        ft_printf("An \033[32;1mARP\033[0m \033[33;1mrequest\033[0m has been broadcast.\n    mac address of request: \033[1m%.2x:%.2x:%.2x:%.2x:%.2x:%.2x\033[0m\n    IP address of request: \033[1m%u.%u.%u.%u\033[0m\nNow sending an \033[32;1mARP\033[0m \033[35;1mreply\033[0m to the target address with spoofed source, please wait...\n", ((uint8_t *) ptr_estc_lcl_ether_arp->arp_sha)[0], ((uint8_t *) ptr_estc_lcl_ether_arp->arp_sha)[1], ((uint8_t *) ptr_estc_lcl_ether_arp->arp_sha)[2], ((uint8_t *) ptr_estc_lcl_ether_arp->arp_sha)[3], ((uint8_t *) ptr_estc_lcl_ether_arp->arp_sha)[4], ((uint8_t *) ptr_estc_lcl_ether_arp->arp_sha)[5], ((uint8_t *) ptr_estc_lcl_ether_arp->arp_spa)[0], ((uint8_t *) ptr_estc_lcl_ether_arp->arp_spa)[1], ((uint8_t *) ptr_estc_lcl_ether_arp->arp_spa)[2], ((uint8_t *) ptr_estc_lcl_ether_arp->arp_spa)[3]);
+        }
+    else
+        {
+        ft_printf("An ARP request has been broadcast.\n    mac address of request: %.2x:%.2x:%.2x:%.2x:%.2x:%.2x\n    IP address of request: %u.%u.%u.%u\nNow sending an ARP reply to the target address with spoofed source, please wait...\n", ((uint8_t *) ptr_estc_lcl_ether_arp->arp_sha)[0], ((uint8_t *) ptr_estc_lcl_ether_arp->arp_sha)[1], ((uint8_t *) ptr_estc_lcl_ether_arp->arp_sha)[2], ((uint8_t *) ptr_estc_lcl_ether_arp->arp_sha)[3], ((uint8_t *) ptr_estc_lcl_ether_arp->arp_sha)[4], ((uint8_t *) ptr_estc_lcl_ether_arp->arp_sha)[5], ((uint8_t *) ptr_estc_lcl_ether_arp->arp_spa)[0], ((uint8_t *) ptr_estc_lcl_ether_arp->arp_spa)[1], ((uint8_t *) ptr_estc_lcl_ether_arp->arp_spa)[2], ((uint8_t *) ptr_estc_lcl_ether_arp->arp_spa)[3]);
+        }
 
     /**
     * Forge an ARP respond packet
@@ -2855,8 +2917,6 @@ uint8_t Fu8__make_arp_poisoning(struct cstc_malcolm_data *ptr_cstc_pssd_malcolm_
         */
         } 
 
-    ft_printf("Now sending an ARP reply to the target address with spoofed source, please wait...\n");
-
     /**
     * Sending the forged arp reply
     */
@@ -2896,7 +2956,14 @@ uint8_t Fu8__make_arp_poisoning(struct cstc_malcolm_data *ptr_cstc_pssd_malcolm_
         */
         }
 
-    ft_printf("Sent an ARP reply packet, you may now check the arp table on the target.\n");
+    if(ptr_cstc_pssd_malcolm_data->sstc_program_argument_.u8_simple_options_[MALCOLM_COLOR] != FALSE)
+        {
+        ft_printf("Sent an \033[32;1mARP\033[0m \033[35;1mreply\033[0m packet, you may now check the arp table on the target.\n");
+        }
+    else
+        {
+        ft_printf("Sent an ARP reply packet, you may now check the arp table on the target.\n");
+        }
 
     return (RETURN_SUCCESS);
     }
@@ -3251,17 +3318,17 @@ int main(int32_t s32_pssd_program_argument_number, char **dbl_ptr_s8_pssd_progra
         * Treat the case when the function to get the value from the argument data failed
         */
 
-        #ifdef DEVELOPEMENT
-        fprintf(stderr, "\033[1;31mERROR\033[0m: in file \033[1m%s\033[0m in function \033[1m%s\033[0m at line \033[1m%d\033[0m\n    The function to get the value from the argument data failed\n", __FILE__, __func__, __LINE__);
-        #endif
+        //#ifdef DEVELOPEMENT
+        //fprintf(stderr, "\033[1;31mERROR\033[0m: in file \033[1m%s\033[0m in function \033[1m%s\033[0m at line \033[1m%d\033[0m\n    The function to get the value from the argument data failed\n", __FILE__, __func__, __LINE__);
+        //#endif
 
-        #ifdef DEMO
-        fprintf(stderr, "\033[1;31mERROR\033[0m: in file \033[1m%s\033[0m at line \033[1m%s\033[0m\n", __FILE__, __LINE__);
-        #endif
+        //#ifdef DEMO
+        //fprintf(stderr, "\033[1;31mERROR\033[0m: in file \033[1m%s\033[0m at line \033[1m%s\033[0m\n", __FILE__, __LINE__);
+        //#endif
 
-        #ifdef PRODUCTION
-        fprintf(stderr, "\033[1;31mERROR\033[0m\n");
-        #endif
+        //#ifdef PRODUCTION
+        //fprintf(stderr, "\033[1;31mERROR\033[0m\n");
+        //#endif
 
         /**
         * Closing the structure malcolm data
@@ -3392,7 +3459,7 @@ int main(int32_t s32_pssd_program_argument_number, char **dbl_ptr_s8_pssd_progra
         */
         }
 
-    (void) Fv__display_structure_malcolm_data(&cstc_lcl_malcolm_data);
+    ft_printf("Exiting program...\n");
 
     /**
     * Closing the structure malcolm data

@@ -15,7 +15,8 @@
 const   uint8_t *malcolm_simple_options[MALCOLM_SIMPLE_OPTION_NUMBER] =
     {
     (uint8_t *) "-h",
-    (uint8_t *) "-b",
+    (uint8_t *) "-v",
+    (uint8_t *) "-c",
     };
 
 const   uint8_t *malcolm_argument_options[MALCOLM_ARGUMENT_OPTION_NUMBER] =

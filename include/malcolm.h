@@ -79,7 +79,8 @@ typedef struct  blob_s
 enum e_malcolm_simple_option_list
 {
     MALCOLM_HELP = 0,
-    MALCOLM_BIDIRECTIONAL,
+    MALCOLM_VERBOSE,
+    MALCOLM_COLOR,
     MALCOLM_SIMPLE_OPTION_NUMBER,
     NO_MALCOLM_SIMPLE_OPTION                                                   // range UINT8_MAX
 };
