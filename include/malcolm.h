@@ -29,6 +29,7 @@
 # include <ifaddrs.h>
 # include <netinet/if_ether.h>
 # include <net/if.h>
+# include <netdb.h>
 
 # include "../libft/libft.h"
 
@@ -88,6 +89,8 @@ enum e_malcolm_simple_option_list
 enum e_malcolm_argument_option_list
 {
     MALCOLM_TIMEOUT,
+    MALCOLM_BIDIRECTIONAL,
+    MALCOLM_NETWORK_NAME,
     MALCOLM_ARGUMENT_OPTION_NUMBER,
     NO_MALCOLM_ARGUMENT_OPTION
 };

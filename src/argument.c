@@ -22,6 +22,8 @@ const   uint8_t *malcolm_simple_options[MALCOLM_SIMPLE_OPTION_NUMBER] =
 const   uint8_t *malcolm_argument_options[MALCOLM_ARGUMENT_OPTION_NUMBER] =
     {
     (uint8_t *) "-t",
+    (uint8_t *) "-b",
+    (uint8_t *) "-n",
     };
 
 uint8_t Fu8__structure_argument_init(struct sstc_argument *ptr_sstc_pssd_argument)
@@ -2167,7 +2169,7 @@ uint8_t Fu8__load_data_from_argument(struct sstc_argument *ptr_sstc_pssd_argumen
     /**
     * Check if the number of ip or mac address is not four
     */
-    if(ptr_sstc_pssd_argument->u64_number_of_ip_or_mac_address_in_argument_ != 4)
+    if((ptr_sstc_pssd_argument->u8_simple_options_[MALCOLM_HELP] == FALSE) && (ptr_sstc_pssd_argument->u64_number_of_ip_or_mac_address_in_argument_ != 4))
         {
         /**
         * Treat the case when the number of ip or mac address is not four
