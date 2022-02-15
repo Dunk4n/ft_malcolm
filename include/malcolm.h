@@ -30,6 +30,7 @@
 # include <netinet/if_ether.h>
 # include <net/if.h>
 # include <netdb.h>
+# include <time.h>
 
 # include "../libft/libft.h"
 

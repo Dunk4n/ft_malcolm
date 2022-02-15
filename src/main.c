@@ -2875,6 +2875,8 @@ uint8_t Fu8__make_arp_poisoning(struct cstc_malcolm_data *ptr_cstc_pssd_malcolm_
     struct ether_arp    *ptr_estc_lcl_ether_arp;
     struct ether_header *ptr_estc_lcl_ether_header;
     struct sockaddr_ll   estc_lcl_socket_addr;
+    time_t               estc_lcl_start_time;
+    time_t               estc_lcl_timeout;
     uint8_t              u8_lcl_packet[PACKET_MAX_LEN];
     uint8_t              u8_lcl_return_from_function;
     uint8_t              u8_tmp_ip_addr_[IP_ADDRESS_BYTE_LEN];
@@ -2883,6 +2885,8 @@ uint8_t Fu8__make_arp_poisoning(struct cstc_malcolm_data *ptr_cstc_pssd_malcolm_
     * Initialization of local variable
     */
     estc_lcl_length_of_socket_addr = sizeof(estc_lcl_socket_addr);
+    estc_lcl_start_time            = 0;
+    estc_lcl_timeout               = 0;
     ptr_estc_lcl_ether_arp         = NULL;
     ptr_estc_lcl_ether_header      = NULL;
     s32_lcl_return_from_function   = -1;
@@ -2899,6 +2903,81 @@ uint8_t Fu8__make_arp_poisoning(struct cstc_malcolm_data *ptr_cstc_pssd_malcolm_
     */
     (void) ft_bzero(&estc_lcl_socket_addr, sizeof(estc_lcl_socket_addr));
     (void) ft_bzero(&u8_tmp_ip_addr_, sizeof(u8_tmp_ip_addr_));
+
+    if(ptr_cstc_pssd_malcolm_data->sstc_program_argument_.u8_argument_options_[MALCOLM_TIMEOUT] != FALSE)
+        {
+        /**
+        * Check if the value of the option timeout is not correctly pointing
+        */
+        if(ptr_cstc_pssd_malcolm_data->sstc_program_argument_.ptr_u8_argument_option_value_str_[MALCOLM_TIMEOUT] == NULL)
+            {
+            /**
+            * Treat the case when the value of the option timeout is not correctly pointing
+            */
+
+            #ifdef DEVELOPEMENT
+            fprintf(stderr, "\033[1;31mERROR\033[0m: in file \033[1m%s\033[0m in function \033[1m%s\033[0m at line \033[1m%d\033[0m\n    the value of the option timeout is not correctly pointing\n", __FILE__, __func__, __LINE__);
+            #endif
+
+            #ifdef DEMO
+            fprintf(stderr, "\033[1;31mERROR\033[0m: in file \033[1m%s\033[0m at line \033[1m%s\033[0m\n", __FILE__, __LINE__);
+            #endif
+
+            #ifdef PRODUCTION
+            fprintf(stderr, "\033[1;31mERROR\033[0m\n");
+            #endif
+
+            /**
+            * Return failure to indicate the value of the option timeout is not correctly pointing
+            */
+            return (RETURN_FAILURE);
+            }
+        else
+            {
+            /**
+            * Treat the case when the value of the option timeout is correctly pointing
+            */
+            } 
+
+        estc_lcl_timeout = 0;
+        estc_lcl_timeout = ft_atoi((char *) ptr_cstc_pssd_malcolm_data->sstc_program_argument_.ptr_u8_argument_option_value_str_[MALCOLM_TIMEOUT]);
+
+        estc_lcl_start_time = -1;
+        estc_lcl_start_time = time(NULL);
+
+        /**
+        * Check if the time function failed
+        */
+        if(estc_lcl_start_time < 0)
+            {
+            /**
+            * Treat the case when the time function failed
+            */
+
+            #ifdef DEVELOPEMENT
+            fprintf(stderr, "\033[1;31mERROR\033[0m: in file \033[1m%s\033[0m in function \033[1m%s\033[0m at line \033[1m%d\033[0m\n    the time function failed\n", __FILE__, __func__, __LINE__);
+            #endif
+
+            #ifdef DEMO
+            fprintf(stderr, "\033[1;31mERROR\033[0m: in file \033[1m%s\033[0m at line \033[1m%s\033[0m\n", __FILE__, __LINE__);
+            #endif
+
+            #ifdef PRODUCTION
+            fprintf(stderr, "\033[1;31mERROR\033[0m\n");
+            #endif
+
+            /**
+            * Return failure to indicate the time function failed
+            */
+            return (RETURN_FAILURE);
+            }
+        else
+            {
+            /**
+            * Treat the case when the time function suucceeded
+            */
+            } 
+        }
 
     /**
     * Getting a valid interface
@@ -3130,6 +3209,12 @@ uint8_t Fu8__make_arp_poisoning(struct cstc_malcolm_data *ptr_cstc_pssd_malcolm_
             /**
             * Treat the case when the packet receve is smaller than an ARP packet
             */
+            }
+
+        if((estc_lcl_timeout != 0) && (time(NULL) - estc_lcl_start_time >= estc_lcl_timeout))
+            {
+            ft_printf("Timeout\n");
+            return (RETURN_SUCCESS);
             }
         }
 
