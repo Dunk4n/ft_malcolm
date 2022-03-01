@@ -1,7 +1,7 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ls.h                                               :+:      :+:    :+:   */
+/*   malloc.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: niduches <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
@@ -10,8 +10,8 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef FT_SSL_H
-# define FT_SSL_H
+#ifndef FT_MALCOLM_H
+# define FT_MALCOLM_H
 
 # include <inttypes.h>
 # include <limits.h>
@@ -155,52 +155,4 @@ void    fv__help(void);
 */
 uint8_t Fu8__copying_string_to_allocated_string(uint8_t *ptr_u8_pssd_source_str, uint8_t **dbl_ptr_u8_pssd_destination_str);
 
-/**
-* FAKE
-*/
-//struct sockaddr_ll
-//{
-//           unsigned short sll_family;   /* Always AF_PACKET */
-//           unsigned short sll_protocol; /* Physical-layer protocol */
-//           int        sll_ifindex;  /* Interface number */
-//           unsigned short sll_hatype;   /* ARP hardware type */
-//           unsigned char  sll_pkttype;  /* Packet type */
-//           unsigned char  sll_halen;    /* Length of address */
-//           unsigned char  sll_addr[8];  /* Physical-layer address */
-//       };
-//
-//struct ifaddrs
-//{
-//           struct ifaddrs  *ifa_next;    /* Next item in list */
-//           char        *ifa_name;    /* Name of interface */
-//           unsigned int ifa_flags;   /* Flags from SIOCGIFFLAGS */
-//           struct sockaddr *ifa_addr;    /* Address of interface */
-//           struct sockaddr *ifa_netmask; /* Netmask of interface */
-//           union {
-//           struct sockaddr *ifu_broadaddr;
-//                    /* Broadcast address of interface */
-//           struct sockaddr *ifu_dstaddr;
-//                    /* Point-to-point destination address */
-//           } ifa_ifu;
-//       #define      ifa_broadaddr ifa_ifu.ifu_broadaddr
-//       #define      ifa_dstaddr   ifa_ifu.ifu_dstaddr
-//           void        *ifa_data;    /* Address-specific data */
-//       };
-//
-//
-//struct	ether_header {
-//	u_char	ether_dhost[6]; // destinator IP
-//	u_char	ether_shost[6]; // sender IP
-//	u_short	ether_type;     // packet type ID field
-//};
-//
-//struct	ether_arp
-//{
-//	struct	arphdr ea_hdr;	/* fixed-size header */
-//	u_char	arp_sha[6];	/* sender hardware address */
-//	u_char	arp_spa[4];	/* sender protocol address */
-//	u_char	arp_tha[6];	/* target hardware address */
-//	u_char	arp_tpa[4];	/* target protocol address */
-//};
-
-#endif /* FT_SSL_H */
+#endif /* FT_MALCOLM_H */
