@@ -63,16 +63,6 @@
 # define NOT_SEVENTH_BIT    (0xBF)
 # define NOT_EIGHTH_BIT     (0x7F)
 
-typedef struct  blob_s
-{
-    uint8_t   u8_global_status_;
-    // FIRST_BIT     Structure initialized      1 = Y/ 0 = N
-    // SECOND_BIT    data set                   1 = Y/ 0 = N
-
-    uint8_t  *ptr_u8_data_blob_;
-    uint64_t  u64_length_data_blob_;
-}               blob_t;
-
 /**
 * ARGUMENT
 */
